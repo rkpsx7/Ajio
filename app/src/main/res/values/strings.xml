@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Ajio</string>
+    <string name="home">Home</string>
+    <string name="stores">Stores</string>
+    <string name="account">Account</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="bag">Bag</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

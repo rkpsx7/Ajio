@@ -1,14 +1,16 @@
-package com.example.ajio;
+package com.example.ajio.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class WishlistActivity extends AppCompatActivity {
+import com.example.ajio.R;
+
+public class NotificationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wishlist);
+        setContentView(R.layout.activity_notification);
     }
 }
