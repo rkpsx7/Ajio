@@ -1,0 +1,2 @@
+rootProject.name = "Ajio"
+include ':app'
