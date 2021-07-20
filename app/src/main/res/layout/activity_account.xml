@@ -1,9 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".AccountActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_my_account_header"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_my_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="12dp"
+                android:text="@string/my_account"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_user_info"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/rl_my_account_header"
+            android:background="#F5F5F5">
+
+            <RelativeLayout
+                android:layout_width="111dp"
+                android:layout_height="111dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="13dp"
+                android:background="@drawable/account_logo_circle">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_person_svgrepo_com__1_" />
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btn_sign_in_join"
+                android:layout_width="229dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/button2_background_bag"
+                android:text="@string/sign_in_join"
+                android:textAllCaps="false"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/rl_user_info">
+
+            <TextView
+                android:id="@+id/btn_customer_care"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/forward_arrow"
+                android:padding="12dp"
+                android:text="@string/customer_care"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/btn_game_zone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_customer_care"
+                android:background="@drawable/account_activity_button_layout"
+                android:drawableEnd="@drawable/forward_arrow"
+                android:padding="12dp"
+                android:text="@string/game_zone"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <View
+                android:id="@+id/space_view_1"
+                android:layout_width="wrap_content"
+                android:layout_height="7dp"
+                android:layout_below="@+id/btn_game_zone"
+                android:background="#F5F5F5" />
+
+            <TextView
+                android:id="@+id/btn_notification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/space_view_1"
+                android:background="@drawable/account_activity_button_layout"
+                android:drawableEnd="@drawable/forward_arrow"
+                android:padding="12dp"
+                android:text="@string/notifications"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <View
+                android:id="@+id/space_view_2"
+                android:layout_width="wrap_content"
+                android:layout_height="7dp"
+                android:layout_below="@+id/btn_notification"
+                android:background="#F5F5F5" />
+
+            <TextView
+                android:id="@+id/btn_return_demo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/space_view_2"
+                android:background="@drawable/account_activity_button_layout"
+                android:drawableEnd="@drawable/forward_arrow"
+                android:padding="12dp"
+                android:text="@string/return_creation_demo"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/btn_how_to_return"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_return_demo"
+                android:background="@drawable/account_activity_button_layout"
+                android:drawableEnd="@drawable/forward_arrow"
+                android:padding="12dp"
+                android:text="@string/how_to_return"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/btn_how_redeem_coupan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_how_to_return"
+                android:background="@drawable/account_activity_button_layout"
+                android:drawableEnd="@drawable/forward_arrow"
+                android:padding="12dp"
+                android:text="@string/how_do_i_redeem_my_coupon"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/btn_terms_conditon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_how_redeem_coupan"
+                android:background="@drawable/account_activity_button_layout"
+                android:drawableEnd="@drawable/forward_arrow"
+                android:padding="12dp"
+                android:text="@string/terms_and_conditions"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/btn_promotions_terms_conditions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_terms_conditon"
+                android:background="@drawable/account_activity_button_layout"
+                android:drawableEnd="@drawable/forward_arrow"
+                android:padding="12dp"
+                android:text="@string/promotions_terms_and_conditions"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/btn_refunds_returns"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_promotions_terms_conditions"
+                android:background="@drawable/account_activity_button_layout"
+                android:drawableEnd="@drawable/forward_arrow"
+                android:padding="12dp"
+                android:text="@string/returns_and_refunds_policy"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/btn_respect_privacy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_refunds_returns"
+                android:background="@drawable/account_activity_button_layout"
+                android:drawableEnd="@drawable/forward_arrow"
+                android:padding="12dp"
+                android:text="@string/we_respect_your_privacy"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+            <TextView
+                android:id="@+id/btn_fees_payments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_respect_privacy"
+                android:background="@drawable/account_activity_button_layout"
+                android:drawableEnd="@drawable/forward_arrow"
+                android:padding="12dp"
+                android:text="@string/fees_and_payments"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/btn_who_we_are"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_fees_payments"
+                android:background="@drawable/account_activity_button_layout"
+                android:drawableEnd="@drawable/forward_arrow"
+                android:padding="12dp"
+                android:text="@string/who_we_are"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/btn_join_team"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_who_we_are"
+                android:background="@drawable/account_activity_button_layout"
+                android:drawableEnd="@drawable/forward_arrow"
+                android:padding="12dp"
+                android:text="@string/join_our_team"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <TextView
+                android:layout_below="@id/btn_join_team"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="17dp"
+                android:layout_marginBottom="17dp"
+                android:textColor="#C0C0C0"
+                android:text="Version 1.0  Build 0001"
+                android:gravity="center"/>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</ScrollView>
