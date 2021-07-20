@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#F5F5F5"
     tools:context=".AccountActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="5dp">
+        android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/rl_my_account_header"
@@ -68,9 +67,10 @@
                 android:textStyle="bold" />
         </RelativeLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:layout_below="@id/rl_user_info">
 
             <TextView
@@ -79,9 +79,10 @@
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/forward_arrow"
                 android:padding="12dp"
+                android:background="@drawable/account_activity_button_layout"
                 android:text="@string/customer_care"
                 android:textColor="@color/black"
-                android:textSize="17dp" />
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/btn_game_zone"
@@ -93,33 +94,25 @@
                 android:padding="12dp"
                 android:text="@string/game_zone"
                 android:textColor="@color/black"
-                android:textSize="17dp" />
+                android:textSize="17sp" />
 
-            <View
-                android:id="@+id/space_view_1"
-                android:layout_width="wrap_content"
-                android:layout_height="7dp"
-                android:layout_below="@+id/btn_game_zone"
-                android:background="#F5F5F5" />
+            
 
             <TextView
                 android:id="@+id/btn_notification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/space_view_1"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp"
                 android:background="@drawable/account_activity_button_layout"
                 android:drawableEnd="@drawable/forward_arrow"
                 android:padding="12dp"
                 android:text="@string/notifications"
                 android:textColor="@color/black"
-                android:textSize="17dp" />
+                android:textSize="17sp" />
 
-            <View
-                android:id="@+id/space_view_2"
-                android:layout_width="wrap_content"
-                android:layout_height="7dp"
-                android:layout_below="@+id/btn_notification"
-                android:background="#F5F5F5" />
+
 
             <TextView
                 android:id="@+id/btn_return_demo"
@@ -131,7 +124,7 @@
                 android:padding="12dp"
                 android:text="@string/return_creation_demo"
                 android:textColor="@color/black"
-                android:textSize="17dp" />
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/btn_how_to_return"
@@ -143,7 +136,7 @@
                 android:padding="12dp"
                 android:text="@string/how_to_return"
                 android:textColor="@color/black"
-                android:textSize="17dp" />
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/btn_how_redeem_coupan"
@@ -155,7 +148,7 @@
                 android:padding="12dp"
                 android:text="@string/how_do_i_redeem_my_coupon"
                 android:textColor="@color/black"
-                android:textSize="17dp" />
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/btn_terms_conditon"
@@ -167,7 +160,7 @@
                 android:padding="12dp"
                 android:text="@string/terms_and_conditions"
                 android:textColor="@color/black"
-                android:textSize="17dp" />
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/btn_promotions_terms_conditions"
@@ -179,7 +172,7 @@
                 android:padding="12dp"
                 android:text="@string/promotions_terms_and_conditions"
                 android:textColor="@color/black"
-                android:textSize="17dp" />
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/btn_refunds_returns"
@@ -191,7 +184,7 @@
                 android:padding="12dp"
                 android:text="@string/returns_and_refunds_policy"
                 android:textColor="@color/black"
-                android:textSize="17dp" />
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/btn_respect_privacy"
@@ -203,7 +196,7 @@
                 android:padding="12dp"
                 android:text="@string/we_respect_your_privacy"
                 android:textColor="@color/black"
-                android:textSize="17dp" />
+                android:textSize="17sp" />
             <TextView
                 android:id="@+id/btn_fees_payments"
                 android:layout_width="match_parent"
@@ -214,7 +207,7 @@
                 android:padding="12dp"
                 android:text="@string/fees_and_payments"
                 android:textColor="@color/black"
-                android:textSize="17dp" />
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/btn_who_we_are"
@@ -226,7 +219,7 @@
                 android:padding="12dp"
                 android:text="@string/who_we_are"
                 android:textColor="@color/black"
-                android:textSize="17dp" />
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/btn_join_team"
@@ -238,21 +231,20 @@
                 android:padding="12dp"
                 android:text="@string/join_our_team"
                 android:textColor="@color/black"
-                android:textSize="17dp" />
+                android:textSize="17sp" />
 
             <TextView
                 android:layout_below="@id/btn_join_team"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="17dp"
-                android:layout_marginBottom="17dp"
+                android:layout_marginTop="17sp"
+                android:layout_marginBottom="17sp"
+                android:text="@string/version_1_0_build_0001"
                 android:textColor="#C0C0C0"
-                android:text="Version 1.0  Build 0001"
                 android:gravity="center"/>
 
 
-        </RelativeLayout>
+        </LinearLayout>
 
     </RelativeLayout>
 </ScrollView>

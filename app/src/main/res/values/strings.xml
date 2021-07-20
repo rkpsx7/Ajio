@@ -18,4 +18,5 @@
     <string name="login_join">Login/Join</string>
     <string name="continue_n_shopping">Continue \n Shopping</string>
     <string name="empty_bag_desc">Sign in to link products in your account or view \n products already in your wishlist or bag</string>
+    <string name="version_1_0_build_0001">Version 1.0 Build 0001</string>
 </resources>

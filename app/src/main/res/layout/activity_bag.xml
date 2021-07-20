@@ -4,41 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#F5F5F5"
     tools:context=".BagActivity">
 
-    <RelativeLayout
+    <Toolbar
         android:layout_width="match_parent"
-        android:layout_height="64dp">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/iv_cross_button"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_cross" />
+            android:background="@color/white">
 
-        <TextView
-            android:id="@+id/tv_title_bag"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="59dp"
-            android:gravity="center"
-            android:text="Bag"
-            android:textColor="@color/black"
-            android:textSize="23dp" />
+            <ImageView
+                android:id="@+id/iv_cross_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_cross" />
 
-        <ImageView
-            android:id="@+id/iv_favourite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="22dp"
-            android:src="@drawable/ic_heart_svgrepo_com" />
+            <TextView
+                android:id="@+id/tv_title_bag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="59dp"
+                android:gravity="center"
+                android:text="Bag"
+                android:textColor="@color/black"
+                android:textSize="23dp" />
 
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/iv_favourite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="22dp"
+                android:src="@drawable/ic_heart_svgrepo_com" />
+
+        </RelativeLayout>
+    </Toolbar>
+
 
     <RelativeLayout
         android:id="@+id/rl_empty_bag_info"
