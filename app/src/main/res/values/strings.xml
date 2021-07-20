@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Ajio</string>
+    <string name="my_account">My Account</string>
+    <string name="sign_in_join">Sign in / Join</string>
+    <string name="return_creation_demo">Return Creation Demo</string>
+    <string name="notifications">Notifications</string>
+    <string name="game_zone">Game Zone</string>
+    <string name="customer_care">Customer Care</string>
+    <string name="how_to_return">How To Return</string>
+    <string name="how_do_i_redeem_my_coupon">How Do I Redeem My Coupon</string>
+    <string name="promotions_terms_and_conditions">Promotions Terms And Conditions</string>
+    <string name="terms_and_conditions">Terms And Conditions</string>
+    <string name="returns_and_refunds_policy">Returns And Refunds Policy</string>
+    <string name="we_respect_your_privacy">We Respect Your Privacy</string>
+    <string name="fees_and_payments">Fees And Payments</string>
+    <string name="who_we_are">Who We Are</string>
+    <string name="join_our_team">Join Our Team</string>
+    <string name="login_join">Login/Join</string>
+    <string name="continue_n_shopping">Continue \n Shopping</string>
+    <string name="empty_bag_desc">Sign in to link products in your account or view \n products already in your wishlist or bag</string>
+    <string name="version_1_0_build_0001">Version 1.0 Build 0001</string>
 </resources>
