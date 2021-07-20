@@ -1,14 +1,16 @@
-package com.example.ajio;
+package com.example.ajio.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class HomeActivity extends AppCompatActivity {
+import com.example.ajio.R;
+
+public class AccountActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_account);
     }
 }

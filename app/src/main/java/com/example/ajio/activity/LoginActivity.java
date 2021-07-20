@@ -1,14 +1,16 @@
-package com.example.ajio;
+package com.example.ajio.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class NotificationActivity extends AppCompatActivity {
+import com.example.ajio.R;
+
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notification);
+        setContentView(R.layout.activity_login);
     }
 }
