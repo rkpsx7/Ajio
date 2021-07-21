@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="@dimen/dp_10"
     tools:context=".activity.WishlistActivity">
@@ -11,40 +11,49 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Wishlist"
+        android:text="@string/wishlist"
         android:textColor="@color/black"
         android:textStyle="bold" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_wishlist"
+        android:adjustViewBounds="true"
+        android:src="@drawable/heart"
+        tools:ignore="ContentDescription" />
+
     <TextView
+        android:id="@+id/tv_wishlist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your "
         android:layout_above="@+id/tv_disc"
         android:layout_marginBottom="@dimen/dp_10"
+        android:text="@string/your_wishlist_is_empty"
         android:textAlignment="center"
-        android:id="@+id/tv_wishlist"
-        android:textColor="@color/black"
-        android:textSize="@dimen/sp_12"/>
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:textColor="@color/black" />
 
     <TextView
+        android:id="@+id/tv_disc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hang your wishes where you can make them come true."
         android:layout_above="@+id/btn_continue_shopping"
         android:layout_marginBottom="@dimen/dp_10"
+        android:text="@string/disc"
         android:textAlignment="center"
-        android:id="@+id/tv_disc"
         android:textColor="@color/black"
-        android:textSize="@dimen/sp_12"/>
+        android:textSize="@dimen/sp_12" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_continue_shopping"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/continue_n_shopping"
+        android:layout_alignParentBottom="true"
         android:backgroundTint="@color/black"
         android:padding="@dimen/dp_10"
-        app:cornerRadius="@dimen/dp_10"
-        android:id="@+id/btn_continue_shopping"
-        android:layout_alignParentBottom="true"/>
+        android:layout_marginBottom="@dimen/dp_10"
+        android:text="@string/continue_n_shopping"
+        app:cornerRadius="@dimen/dp_10" />
 
 </RelativeLayout>
