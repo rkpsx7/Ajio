@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "349759428980",
+    "project_id": "ajio-f9ef3",
+    "storage_bucket": "ajio-f9ef3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:349759428980:android:8a73418110adad5c6a7421",
+        "android_client_info": {
+          "package_name": "com.example.ajio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "349759428980-i8s2pf2v2h1sd7gspn003cr9pr2etjrm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZtAFlb4h7z9tpS5_jNgacSdS8hIBn4OU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "349759428980-i8s2pf2v2h1sd7gspn003cr9pr2etjrm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
