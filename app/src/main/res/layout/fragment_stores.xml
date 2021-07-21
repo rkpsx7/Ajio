@@ -14,37 +14,43 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/stores2"/>
+            android:src="@drawable/stores2"
+            tools:ignore="ContentDescription" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/stores3"/>
+            android:src="@drawable/stores3"
+            tools:ignore="ContentDescription" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/stores4"/>
+            android:src="@drawable/stores4"
+            tools:ignore="ContentDescription" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/stores5"/>
+            android:src="@drawable/stores5"
+            tools:ignore="ContentDescription" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/stores6"/>
+            android:src="@drawable/stores6"
+            tools:ignore="ContentDescription" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/stores7"/>
+            android:src="@drawable/stores7"
+            tools:ignore="ContentDescription" />
 
     </LinearLayout>
 </ScrollView>

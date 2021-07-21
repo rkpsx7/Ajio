@@ -31,6 +31,10 @@
     <string name="use_e_mail_id">Use E-mail ID</string>
     <string name="or_continue_with_social_account">Or continue with social account</string>
     <string name="terms">By signing up/logging in, I agree to</string>
+    <string name="notifications">Notifications</string>
+    <string name="all">All</string>
+    <string name="order_updates">Order Updates</string>
+    <string name="promotions">Promotions</string>
     <string name="edit">Edit</string>
     <string name="ajio">ajio</string>
     <string name="search_hint">Search by Product, Brand and more...</string>
