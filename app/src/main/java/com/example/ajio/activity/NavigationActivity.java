@@ -18,7 +18,7 @@ public class NavigationActivity extends AppCompatActivity {
         mBinding = ActivityNavigationBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
 
-        mBinding.ibBack.setOnClickListener(v -> startActivity(new Intent(NavigationActivity.this, HomeActivity.class)));
-        mBinding.ibHome.setOnClickListener(v -> startActivity(new Intent(NavigationActivity.this, HomeActivity.class)));
+//        mBinding.ibBack.setOnClickListener(v -> startActivity(new Intent(NavigationActivity.this, HomeActivity.class)));
+//        mBinding.ibHome.setOnClickListener(v -> startActivity(new Intent(NavigationActivity.this, HomeActivity.class)));
     }
 }

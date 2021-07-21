@@ -31,4 +31,16 @@
     <string name="use_e_mail_id">Use E-mail ID</string>
     <string name="or_continue_with_social_account">Or continue with social account</string>
     <string name="terms">By signing up/logging in, I agree to</string>
+    <string name="edit">Edit</string>
+    <string name="ajio">ajio</string>
+    <string name="search_hint">Search by Product, Brand and more...</string>
+    <string name="shop_by">Shop by</string>
+    <string name="women">Women</string>
+    <string name="men">Men</string>
+    <string name="kids">Kids</string>
+    <string name="home_and_kitchen">Home And Kitchen</string>
+    <string name="indie_the_artisan_store">Indie (the Artisan Store)</string>
+    <string name="jewellery">Previous Jwellary</string>
+    <string name="sneakerHood">SneakerHood</string>
+    <string name="new_arrivals">New Arrivals</string>
 </resources>

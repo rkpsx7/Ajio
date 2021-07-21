@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.NavigationActivity">
 
     <RelativeLayout
-        android:id="@+id/rl_topbar"
+        android:id="@+id/top_layout"
         android:layout_width="match_parent"
         android:layout_height="60dp">
 
@@ -14,239 +15,243 @@
             android:id="@+id/ib_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_clear"
-            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dp_10"
             android:background="@color/white"
-            android:layout_centerVertical="true"/>
+            android:src="@drawable/ic_clear"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tv_ajio_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ajio"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:textSize="@dimen/sp_30"
-            android:textStyle="bold" />
+            android:text="@string/ajio"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_20"
+            android:textStyle="bold"
+            tools:ignore="RelativeOverlap" />
 
         <ImageButton
             android:id="@+id/ib_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/ic_home_svg"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/dp_60"
-            android:background="@color/white"/>
+            android:background="@color/white"
+            android:src="@drawable/ic_home_svg"
+            tools:ignore="ContentDescription" />
 
         <ImageButton
             android:id="@+id/ib_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/ic_search_2"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/dp_20"
-            android:background="@color/white"/>
+            android:background="@color/white"
+            android:src="@drawable/ic_search_2"
+            tools:ignore="ContentDescription" />
 
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#f2f2f2"
-        android:layout_below="@id/rl_topbar">
+        android:layout_below="@id/top_layout"
+        android:background="@color/lime_white"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_15"
             android:text="@string/shop_by"
-            android:textSize="@dimen/sp_22"
             android:textColor="@color/black"
-            android:layout_margin="@dimen/dp_22"/>
+            android:textSize="@dimen/sp_20" />
 
-
-        <ScrollView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="@dimen/dp_20"
-            android:layout_marginLeft="@dimen/dp_20"
-            android:layout_marginBottom="@dimen/dp_20"
-            android:background="#f2f2f2">
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
+            android:background="@color/lime_white"
+            android:padding="@dimen/dp_10"
+            app:cardCornerRadius="@dimen/dp_10">
 
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="@drawable/menu_scrollview_rect">
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/tv_women"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_60"
-                    android:text="@string/women"
-                    android:padding="@dimen/dp_12"
-                    android:textSize="@dimen/sp_20"
-                    android:textColor="@color/black"
-                    android:drawableStart="@drawable/ic_woman_svgrepo_com"
-                    android:drawablePadding="@dimen/dp_22"
-                    android:drawableEnd="@drawable/ic_chevron_right_" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/menu_scrollview_rect"
+                    android:orientation="vertical">
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#f2f2f2"
-                    android:layout_marginLeft="@dimen/dp_17"
-                    android:layout_marginRight="@dimen/dp_17"/>
+                    <TextView
+                        android:id="@+id/tv_women"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_60"
+                        android:background="@color/white"
+                        android:drawablePadding="@dimen/dp_20"
+                        android:padding="@dimen/dp_12"
+                        android:text="@string/women"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_20"
+                        app:drawableEndCompat="@drawable/ic_chevron_right_"
+                        app:drawableStartCompat="@drawable/ic_woman_svgrepo_com" />
 
-                <TextView
-                    android:id="@+id/tv_men"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_60"
-                    android:text="@string/men"
-                    android:textColor="@color/black"
-                    android:padding="@dimen/dp_12"
-                    android:textSize="@dimen/sp_20"
-                    android:drawableStart="@drawable/ic_man_svgrepo_com"
-                    android:drawablePadding="@dimen/dp_22"
-                    android:drawableEnd="@drawable/ic_chevron_right_"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_1"
+                        android:background="@color/dark" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#f2f2f2"
-                    android:layout_marginLeft="@dimen/dp_17"
-                    android:layout_marginRight="@dimen/dp_17"/>
+                    <TextView
+                        android:id="@+id/tv_men"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_60"
+                        android:background="@color/white"
+                        android:drawablePadding="@dimen/dp_20"
+                        android:padding="@dimen/dp_12"
+                        android:text="@string/men"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_20"
+                        app:drawableEndCompat="@drawable/ic_chevron_right_"
+                        app:drawableStartCompat="@drawable/ic_man_svgrepo_com" />
 
-                <TextView
-                    android:id="@+id/tv_kids"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_60"
-                    android:text="@string/kids"
-                    android:textColor="@color/black"
-                    android:padding="@dimen/dp_12"
-                    android:textSize="@dimen/sp_20"
-                    android:drawableStart="@drawable/ic_baby_svgrepo_com"
-                    android:drawablePadding="@dimen/dp_22"
-                    android:drawableEnd="@drawable/ic_chevron_right_"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#f2f2f2"
-                    android:layout_marginLeft="@dimen/dp_17"
-                    android:layout_marginRight="@dimen/dp_17"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_1"
+                        android:background="@color/dark" />
 
-                <TextView
-                    android:id="@+id/tv_home_kitchen"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_60"
-                    android:text="@string/home_and_kitchen"
-                    android:textColor="@color/black"
-                    android:padding="@dimen/dp_12"
-                    android:textSize="@dimen/sp_20"
-                    android:drawableStart="@drawable/ic_home_repair_svgrepo_com"
-                    android:drawablePadding="@dimen/dp_22"
-                    android:drawableEnd="@drawable/ic_chevron_right_"/>
+                    <TextView
+                        android:id="@+id/tv_kids"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_60"
+                        android:background="@color/white"
+                        android:drawablePadding="@dimen/dp_20"
+                        android:padding="@dimen/dp_12"
+                        android:text="@string/kids"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_20"
+                        app:drawableEndCompat="@drawable/ic_chevron_right_"
+                        app:drawableStartCompat="@drawable/ic_baby_svgrepo_com" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#f2f2f2"
-                    android:layout_marginLeft="@dimen/dp_17"
-                    android:layout_marginRight="@dimen/dp_17"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_1"
+                        android:background="@color/dark" />
 
-                <TextView
-                    android:id="@+id/tv_stores"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_60"
-                    android:text="@string/stores"
-                    android:textColor="@color/black"
-                    android:padding="@dimen/dp_12"
-                    android:textSize="@dimen/sp_20"
-                    android:drawableStart="@drawable/ic_shop_store_svgrepo_com"
-                    android:drawablePadding="@dimen/dp_22"
-                    android:drawableEnd="@drawable/ic_chevron_right_"/>
+                    <TextView
+                        android:id="@+id/tv_home_kitchen"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_60"
+                        android:background="@color/white"
+                        android:drawablePadding="@dimen/dp_20"
+                        android:padding="@dimen/dp_12"
+                        android:text="@string/home_and_kitchen"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_20"
+                        app:drawableEndCompat="@drawable/ic_chevron_right_"
+                        app:drawableStartCompat="@drawable/ic_home_repair_svgrepo_com" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#f2f2f2"
-                    android:layout_marginLeft="@dimen/dp_17"
-                    android:layout_marginRight="@dimen/dp_17"/>
-                <TextView
-                    android:id="@+id/tv_indie_artisan"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_60"
-                    android:text="@string/indie_the_artisan_store"
-                    android:textColor="@color/black"
-                    android:padding="@dimen/dp_12"
-                    android:textSize="@dimen/sp_20"
-                    android:drawableStart="@drawable/ic_flower_svgrepo_com"
-                    android:drawablePadding="@dimen/dp_22"
-                    android:drawableEnd="@drawable/ic_chevron_right_"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_1"
+                        android:background="@color/dark" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#f2f2f2"
-                    android:layout_marginLeft="@dimen/dp_17"
-                    android:layout_marginRight="@dimen/dp_17"/>
+                    <TextView
+                        android:id="@+id/tv_stores"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_60"
+                        android:background="@color/white"
+                        android:drawablePadding="@dimen/dp_20"
+                        android:padding="@dimen/dp_12"
+                        android:text="@string/stores"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_20"
+                        app:drawableEndCompat="@drawable/ic_chevron_right_"
+                        app:drawableStartCompat="@drawable/ic_shop_store_svgrepo_com" />
 
-                <TextView
-                    android:id="@+id/tv_jewellery"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_60"
-                    android:text="@string/jewellery"
-                    android:textColor="@color/black"
-                    android:padding="@dimen/dp_12"
-                    android:textSize="@dimen/sp_20"
-                    android:drawableStart="@drawable/ic_earrings_svgrepo_com"
-                    android:drawablePadding="@dimen/dp_22"
-                    android:drawableEnd="@drawable/ic_chevron_right_"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#f2f2f2"
-                    android:layout_marginLeft="@dimen/dp_17"
-                    android:layout_marginRight="@dimen/dp_17"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_1"
+                        android:background="@color/dark" />
 
-                <TextView
-                    android:id="@+id/tv_sneaker"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_60"
-                    android:text="@string/sneakerhood"
-                    android:textColor="@color/black"
-                    android:padding="@dimen/dp_12"
-                    android:textSize="@dimen/sp_20"
-                    android:drawableStart="@drawable/ic_sneaker_svgrepo_com"
-                    android:drawablePadding="@dimen/dp_22"
-                    android:drawableEnd="@drawable/ic_chevron_right_"
-                    />
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#f2f2f2"
-                    android:layout_marginLeft="@dimen/dp_17"
-                    android:layout_marginRight="@dimen/dp_17"/>
+                    <TextView
+                        android:id="@+id/tv_indie_artisan"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_60"
+                        android:background="@color/white"
+                        android:drawablePadding="@dimen/dp_20"
+                        android:padding="@dimen/dp_12"
+                        android:singleLine="true"
+                        android:text="@string/indie_the_artisan_store"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_20"
+                        app:drawableEndCompat="@drawable/ic_chevron_right_"
+                        app:drawableStartCompat="@drawable/ic_flower_svgrepo_com" />
 
-                <TextView
-                    android:id="@+id/tv_new_arrivals"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_60"
-                    android:text="@string/new_arrivals"
-                    android:textColor="@color/black"
-                    android:padding="@dimen/dp_12"
-                    android:textSize="@dimen/sp_20"
-                    android:drawableStart="@drawable/ic_new_svgrepo_com"
-                    android:drawablePadding="@dimen/dp_22"
-                    android:drawableEnd="@drawable/ic_chevron_right_"
-                    />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_1"
+                        android:background="@color/dark" />
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/tv_jewellery"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_60"
+                        android:background="@color/white"
+                        android:drawablePadding="@dimen/dp_20"
+                        android:padding="@dimen/dp_12"
+                        android:text="@string/jewellery"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_20"
+                        app:drawableEndCompat="@drawable/ic_chevron_right_"
+                        app:drawableStartCompat="@drawable/ic_earrings_svgrepo_com" />
 
-        </ScrollView>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_1"
+                        android:background="@color/dark" />
 
+                    <TextView
+                        android:id="@+id/tv_sneaker"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_60"
+                        android:background="@color/white"
+                        android:drawablePadding="@dimen/dp_20"
+                        android:padding="@dimen/dp_12"
+                        android:text="@string/sneakerHood"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_20"
+                        app:drawableEndCompat="@drawable/ic_chevron_right_"
+                        app:drawableStartCompat="@drawable/ic_sneaker_svgrepo_com" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_1"
+                        android:background="@color/dark" />
+
+                    <TextView
+                        android:id="@+id/tv_new_arrivals"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_60"
+                        android:background="@color/white"
+                        android:drawablePadding="@dimen/dp_20"
+                        android:padding="@dimen/dp_12"
+                        android:text="@string/new_arrivals"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_20"
+                        app:drawableEndCompat="@drawable/ic_chevron_right_"
+                        app:drawableStartCompat="@drawable/ic_new_svgrepo_com" />
+
+                </LinearLayout>
+
+            </ScrollView>
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 </RelativeLayout>

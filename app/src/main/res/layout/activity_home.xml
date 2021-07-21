@@ -10,28 +10,29 @@
     <LinearLayout
         android:id="@+id/layout_relative"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="@dimen/dp_120"
         android:background="@color/lime_white"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="@dimen/dp_16">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/dp_0"
             android:layout_weight="2">
 
             <ImageView
+                android:id="@+id/img_hamburger"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_hamburger"
-                android:id="@+id/img_hamburger"/>
+                tools:ignore="ContentDescription" />
 
             <TextView
-                android:id="@+id/tv_ajio"
+                android:id="@+id/tv_jio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="ajio"
+                android:text="@string/ajio"
                 android:textAllCaps="true"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
 
@@ -39,15 +40,17 @@
                 android:id="@+id/img_drop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/tv_ajio"
-                android:src="@drawable/ic_drop" />
+                android:layout_toEndOf="@+id/tv_jio"
+                android:src="@drawable/ic_drop"
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:id="@+id/img_notification"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/ic_notification" />
+                android:src="@drawable/ic_notification"
+                tools:ignore="ContentDescription" />
 
         </RelativeLayout>
 
@@ -58,10 +61,12 @@
             android:layout_weight="1"
             android:background="@drawable/custom_et_background"
             android:drawableStart="@drawable/ic_search"
-            android:drawablePadding="10dp"
-            android:hint="Search by Product, Brand and more..."
-            android:paddingStart="10dp"
-            android:textSize="13sp" />
+            android:drawablePadding="@dimen/dp_10"
+            android:hint="@string/search_hint"
+            android:inputType="text"
+            android:paddingStart="@dimen/dp_10"
+            android:textSize="@dimen/sp_12"
+            tools:ignore="Autofill,RtlSymmetry" />
 
     </LinearLayout>
 
