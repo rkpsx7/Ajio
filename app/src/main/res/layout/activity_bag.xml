@@ -7,8 +7,8 @@
     tools:context=".activity.BagActivity">
 
     <Toolbar
-        android:layout_width="match_parent"
         android:id="@+id/toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <RelativeLayout
@@ -21,17 +21,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:src="@drawable/ic_clear" />
+                android:src="@drawable/ic_clear"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/tv_title_bag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="@dimen/dp_10"
                 android:layout_toEndOf="@+id/iv_cross"
-                android:text="Bag"
-                android:textColor="@color/black" />
+                android:text="@string/bag"
+                android:textColor="@color/black"
+                tools:ignore="RelativeOverlap" />
 
             <ImageView
                 android:id="@+id/iv_favourite"
@@ -39,8 +41,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:paddingEnd="10dp"
-                android:src="@drawable/ic_favourite" />
+                android:paddingEnd="@dimen/dp_10"
+                android:src="@drawable/ic_favourite"
+                tools:ignore="ContentDescription,RtlSymmetry" />
 
         </RelativeLayout>
     </Toolbar>
@@ -48,25 +51,27 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:layout_below="@+id/toolbar"
-        android:src="@drawable/offer_bag"
+        android:layout_margin="@dimen/dp_10"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter"/>
+        android:scaleType="fitCenter"
+        android:src="@drawable/offer_bag"
+        tools:ignore="ContentDescription" />
 
     <RelativeLayout
         android:id="@+id/rl_empty_bag_info"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"
         android:layout_centerInParent="true"
         android:background="@drawable/circle">
 
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_60"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_bag_svgrepo_com" />
+            android:src="@drawable/ic_bag_in"
+            tools:ignore="ContentDescription" />
 
     </RelativeLayout>
 
@@ -76,10 +81,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/rl_empty_bag_info"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
-        android:text="Your bag is empty"
-        android:textSize="20sp"
+        android:layout_marginTop="@dimen/dp_12"
+        android:text="@string/your_bag_is_empty"
         android:textColor="@color/black"
+        android:textSize="@dimen/sp_20"
         android:textStyle="bold" />
 
     <TextView
@@ -88,7 +93,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_bag_is_empty"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="7dp"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/dp_10"
         android:text="@string/empty_bag_desc"
         android:textAlignment="center"
         android:textColor="@color/black" />
@@ -101,38 +107,36 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_continue_shopping"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/dp_10"
             android:layout_weight="1"
-            android:padding="10dp"
-            android:textSize="12sp"
+            android:padding="@dimen/dp_10"
             android:text="@string/continue_n_shopping"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/black"
+            android:textSize="@dimen/sp_12"
             app:backgroundTint="@color/white"
-            app:cornerRadius="5dp"
+            app:cornerRadius="@dimen/dp_5"
             app:strokeColor="@color/black"
-            app:strokeWidth="0.5dp" />
+            app:strokeWidth="@dimen/dp_0.5" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_login_join"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:textSize="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/dp_10"
             android:layout_weight="1"
-            android:padding="10dp"
+            android:padding="@dimen/dp_10"
             android:text="@string/login_join"
             android:textAlignment="center"
             android:textAllCaps="false"
+            android:textSize="@dimen/sp_12"
             app:backgroundTint="@color/black"
-            app:cornerRadius="5dp" />
+            app:cornerRadius="@dimen/dp_5" />
 
     </LinearLayout>
-
-
 </RelativeLayout>

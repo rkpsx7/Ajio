@@ -24,4 +24,5 @@
     <string name="account">Account</string>
     <string name="wishlist">Wishlist</string>
     <string name="bag">Bag</string>
+    <string name="your_bag_is_empty">Your bag is empty</string>
 </resources>
