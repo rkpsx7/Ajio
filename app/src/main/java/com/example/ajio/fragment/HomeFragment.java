@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.ajio.R;
@@ -34,6 +35,26 @@ public class HomeFragment extends Fragment {
                 .load("https://assets.ajio.com/medias/sys_master/images/images/h83/h73/33815931617310/07072021-D-unisex-alliances-mobikwik.jpg")
                 .into(mBinding.imgMobikwik);
 
+        int [] saleImages = {R.drawable.sale1, R.drawable.sale2, R.drawable.sale3, R.drawable.sale4};
+
+        for (int saleImage : saleImages) {
+
+            showSaleImages(saleImage);
+        }
+
         return mBinding.getRoot();
+    }
+
+    private void showSaleImages(int saleImages) {
+
+        ImageView imageView = new ImageView(getContext());
+        imageView.setBackgroundResource(saleImages);
+
+        mBinding.viewFlipper.addView(imageView);
+        mBinding.viewFlipper.setFlipInterval(3000);
+        mBinding.viewFlipper.setAutoStart(true);
+
+        mBinding.viewFlipper.setInAnimation(getContext(), android.R.anim.slide_in_left);
+        mBinding.viewFlipper.setOutAnimation(getContext(), android.R.anim.slide_out_right);
     }
 }
