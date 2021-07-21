@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#F5F5F5"
+    android:background="@color/dark_white"
     tools:context=".activity.AccountActivity">
 
     <LinearLayout
@@ -16,7 +16,7 @@
             android:id="@+id/rl_my_account_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="15dp"
+            android:padding="@dimen/dp_15"
             android:background="@color/white">
 
             <TextView
@@ -26,7 +26,7 @@
                 android:layout_centerVertical="true"
                 android:text="@string/my_account"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="@dimen/sp_18"
                 android:textStyle="bold" />
 
         </RelativeLayout>
@@ -34,13 +34,13 @@
         <RelativeLayout
             android:id="@+id/rl_user_info"
             android:layout_width="match_parent"
-            android:padding="20dp"
+            android:padding="@dimen/dp_20"
             android:layout_height="wrap_content"
             android:background="@color/lime_white">
 
             <RelativeLayout
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_100"
                 android:layout_centerVertical="true"
                 android:background="@drawable/account_logo_circle">
 
@@ -48,7 +48,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/ic_person_svgrepo_com__1_" />
+                    android:src="@drawable/ic_account"
+                    tools:ignore="ContentDescription" />
 
             </RelativeLayout>
 
@@ -58,17 +59,17 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:backgroundTint="@color/black"
-                app:cornerRadius="5dp"
+                app:cornerRadius="@dimen/dp_5"
                 android:layout_centerVertical="true"
                 android:text="@string/sign_in_join"
                 android:textAllCaps="false"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="RelativeOverlap" />
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/rl_user_info"
             android:orientation="vertical">
 
             <TextView
@@ -76,153 +77,151 @@
                 android:layout_width="match_parent"
                 android:background="@color/white"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:drawableEnd="@drawable/ic_chevron_right_"
-                android:padding="12dp"
+                android:layout_marginBottom="@dimen/dp_1"
+                android:padding="@dimen/dp_12"
                 android:text="@string/customer_care"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                app:drawableEndCompat="@drawable/ic_chevron_right_" />
 
             <TextView
                 android:id="@+id/btn_game_zone"
                 android:layout_width="match_parent"
                 android:background="@color/white"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_chevron_right_"
-                android:padding="12dp"
+                android:padding="@dimen/dp_12"
                 android:text="@string/game_zone"
-                android:textColor="@color/black"/>
-
+                android:textColor="@color/black"
+                app:drawableEndCompat="@drawable/ic_chevron_right_" />
 
             <TextView
                 android:id="@+id/btn_notification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="@dimen/dp_6"
                 android:background="@color/white"
-                android:layout_marginBottom="6dp"
-                android:padding="12dp"
+                android:layout_marginBottom="@dimen/dp_6"
+                android:padding="@dimen/dp_12"
                 android:text="@string/notifications"
                 android:textColor="@color/black"
                 app:drawableEndCompat="@drawable/ic_chevron_right_" />
-
 
             <TextView
                 android:id="@+id/btn_return_demo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_chevron_right_"
-                android:padding="12dp"
+                android:padding="@dimen/dp_12"
                 android:background="@color/white"
-                android:layout_marginBottom="1dp"
+                android:layout_marginBottom="@dimen/dp_1"
                 android:text="@string/return_creation_demo"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                app:drawableEndCompat="@drawable/ic_chevron_right_" />
 
             <TextView
                 android:id="@+id/btn_how_to_return"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_chevron_right_"
-                android:padding="12dp"
+                android:padding="@dimen/dp_12"
                 android:layout_marginBottom="1dp"
                 android:background="@color/white"
                 android:text="@string/how_to_return"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                app:drawableEndCompat="@drawable/ic_chevron_right_" />
 
             <TextView
                 android:id="@+id/btn_how_redeem_coupan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_chevron_right_"
-                android:padding="12dp"
+                android:padding="@dimen/dp_12"
                 android:background="@color/white"
-                android:layout_marginBottom="1dp"
+                android:layout_marginBottom="@dimen/dp_1"
                 android:text="@string/how_do_i_redeem_my_coupon"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                app:drawableEndCompat="@drawable/ic_chevron_right_" />
 
             <TextView
-                android:id="@+id/btn_terms_conditon"
+                android:id="@+id/btn_terms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_chevron_right_"
-                android:padding="12dp"
+                android:padding="@dimen/dp_12"
                 android:background="@color/white"
-                android:layout_marginBottom="1dp"
+                android:layout_marginBottom="@dimen/dp_1"
                 android:text="@string/terms_and_conditions"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                app:drawableEndCompat="@drawable/ic_chevron_right_" />
 
             <TextView
                 android:id="@+id/btn_promotions_terms_conditions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_chevron_right_"
-                android:padding="12dp"
-                android:layout_marginBottom="1dp"
+                android:padding="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_1"
                 android:background="@color/white"
                 android:text="@string/promotions_terms_and_conditions"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                app:drawableEndCompat="@drawable/ic_chevron_right_" />
 
             <TextView
                 android:id="@+id/btn_refunds_returns"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_chevron_right_"
-                android:padding="12dp"
-                android:layout_marginBottom="1dp"
+                android:padding="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_1"
                 android:background="@color/white"
                 android:text="@string/returns_and_refunds_policy"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                app:drawableEndCompat="@drawable/ic_chevron_right_" />
 
             <TextView
                 android:id="@+id/btn_respect_privacy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_chevron_right_"
-                android:padding="12dp"
-                android:layout_marginBottom="1dp"
+                android:padding="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_1"
                 android:background="@color/white"
                 android:text="@string/we_respect_your_privacy"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                app:drawableEndCompat="@drawable/ic_chevron_right_" />
 
             <TextView
                 android:id="@+id/btn_fees_payments"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_chevron_right_"
-                android:padding="12dp"
+                android:padding="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_1"
                 android:background="@color/white"
-                android:layout_marginBottom="1dp"
                 android:text="@string/fees_and_payments"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                app:drawableEndCompat="@drawable/ic_chevron_right_" />
 
             <TextView
                 android:id="@+id/btn_who_we_are"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_chevron_right_"
-                android:padding="12dp"
+                android:padding="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_1"
                 android:background="@color/white"
-                android:layout_marginBottom="1dp"
                 android:text="@string/who_we_are"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                app:drawableEndCompat="@drawable/ic_chevron_right_" />
 
             <TextView
                 android:id="@+id/btn_join_team"
                 android:layout_width="match_parent"
                 android:background="@color/white"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_chevron_right_"
-                android:padding="12dp"
+                android:padding="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_1"
                 android:text="@string/join_our_team"
-                android:layout_marginBottom="1dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                app:drawableEndCompat="@drawable/ic_chevron_right_" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:layout_marginBottom="1dp"
-                android:padding="12dp"
-                android:textSize="12sp"
+                android:padding="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_1"
+                android:textSize="@dimen/sp_12"
                 android:gravity="center"
                 android:text="@string/version_1_0_build_0001"
                 android:textColor="#C0C0C0" />

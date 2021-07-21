@@ -25,4 +25,10 @@
     <string name="wishlist">Wishlist</string>
     <string name="bag">Bag</string>
     <string name="your_bag_is_empty">Your bag is empty</string>
+    <string name="your_wishlist_is_empty">Your wishlist is empty</string>
+    <string name="disc">Hang your wishes where you can make them come true.</string>
+    <string name="enter_mobile_number">Enter Mobile Number</string>
+    <string name="use_e_mail_id">Use E-mail ID</string>
+    <string name="or_continue_with_social_account">Or continue with social account</string>
+    <string name="terms">By signing up/logging in, I agree to</string>
 </resources>
