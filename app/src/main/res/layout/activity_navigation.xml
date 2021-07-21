@@ -1,16 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
     tools:context=".activity.NavigationActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Navigation activity" />
+    <RelativeLayout
+        android:id="@+id/rl_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
 
-</LinearLayout>
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_clear"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:background="@color/white"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/tv_ajio_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ajio"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/sp_30"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/ib_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_home_svg"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dp_60"
+            android:background="@color/white"/>
+
+        <ImageButton
+            android:id="@+id/ib_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_search_2"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:background="@color/white"/>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#f2f2f2"
+        android:layout_below="@id/rl_topbar">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/shop_by"
+            android:textSize="@dimen/sp_22"
+            android:textColor="@color/black"
+            android:layout_margin="@dimen/dp_22"/>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:background="#f2f2f2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/menu_scrollview_rect">
+
+                <TextView
+                    android:id="@+id/tv_women"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_60"
+                    android:text="@string/women"
+                    android:padding="@dimen/dp_12"
+                    android:textSize="@dimen/sp_20"
+                    android:textColor="@color/black"
+                    android:drawableStart="@drawable/ic_woman_svgrepo_com"
+                    android:drawablePadding="@dimen/dp_22"
+                    android:drawableEnd="@drawable/ic_chevron_right_" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#f2f2f2"
+                    android:layout_marginLeft="@dimen/dp_17"
+                    android:layout_marginRight="@dimen/dp_17"/>
+
+                <TextView
+                    android:id="@+id/tv_men"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_60"
+                    android:text="@string/men"
+                    android:textColor="@color/black"
+                    android:padding="@dimen/dp_12"
+                    android:textSize="@dimen/sp_20"
+                    android:drawableStart="@drawable/ic_man_svgrepo_com"
+                    android:drawablePadding="@dimen/dp_22"
+                    android:drawableEnd="@drawable/ic_chevron_right_"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#f2f2f2"
+                    android:layout_marginLeft="@dimen/dp_17"
+                    android:layout_marginRight="@dimen/dp_17"/>
+
+                <TextView
+                    android:id="@+id/tv_kids"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_60"
+                    android:text="@string/kids"
+                    android:textColor="@color/black"
+                    android:padding="@dimen/dp_12"
+                    android:textSize="@dimen/sp_20"
+                    android:drawableStart="@drawable/ic_baby_svgrepo_com"
+                    android:drawablePadding="@dimen/dp_22"
+                    android:drawableEnd="@drawable/ic_chevron_right_"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#f2f2f2"
+                    android:layout_marginLeft="@dimen/dp_17"
+                    android:layout_marginRight="@dimen/dp_17"/>
+
+                <TextView
+                    android:id="@+id/tv_home_kitchen"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_60"
+                    android:text="@string/home_and_kitchen"
+                    android:textColor="@color/black"
+                    android:padding="@dimen/dp_12"
+                    android:textSize="@dimen/sp_20"
+                    android:drawableStart="@drawable/ic_home_repair_svgrepo_com"
+                    android:drawablePadding="@dimen/dp_22"
+                    android:drawableEnd="@drawable/ic_chevron_right_"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#f2f2f2"
+                    android:layout_marginLeft="@dimen/dp_17"
+                    android:layout_marginRight="@dimen/dp_17"/>
+
+                <TextView
+                    android:id="@+id/tv_stores"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_60"
+                    android:text="@string/stores"
+                    android:textColor="@color/black"
+                    android:padding="@dimen/dp_12"
+                    android:textSize="@dimen/sp_20"
+                    android:drawableStart="@drawable/ic_shop_store_svgrepo_com"
+                    android:drawablePadding="@dimen/dp_22"
+                    android:drawableEnd="@drawable/ic_chevron_right_"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#f2f2f2"
+                    android:layout_marginLeft="@dimen/dp_17"
+                    android:layout_marginRight="@dimen/dp_17"/>
+                <TextView
+                    android:id="@+id/tv_indie_artisan"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_60"
+                    android:text="@string/indie_the_artisan_store"
+                    android:textColor="@color/black"
+                    android:padding="@dimen/dp_12"
+                    android:textSize="@dimen/sp_20"
+                    android:drawableStart="@drawable/ic_flower_svgrepo_com"
+                    android:drawablePadding="@dimen/dp_22"
+                    android:drawableEnd="@drawable/ic_chevron_right_"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#f2f2f2"
+                    android:layout_marginLeft="@dimen/dp_17"
+                    android:layout_marginRight="@dimen/dp_17"/>
+
+                <TextView
+                    android:id="@+id/tv_jewellery"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_60"
+                    android:text="@string/jewellery"
+                    android:textColor="@color/black"
+                    android:padding="@dimen/dp_12"
+                    android:textSize="@dimen/sp_20"
+                    android:drawableStart="@drawable/ic_earrings_svgrepo_com"
+                    android:drawablePadding="@dimen/dp_22"
+                    android:drawableEnd="@drawable/ic_chevron_right_"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#f2f2f2"
+                    android:layout_marginLeft="@dimen/dp_17"
+                    android:layout_marginRight="@dimen/dp_17"/>
+
+                <TextView
+                    android:id="@+id/tv_sneaker"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_60"
+                    android:text="@string/sneakerhood"
+                    android:textColor="@color/black"
+                    android:padding="@dimen/dp_12"
+                    android:textSize="@dimen/sp_20"
+                    android:drawableStart="@drawable/ic_sneaker_svgrepo_com"
+                    android:drawablePadding="@dimen/dp_22"
+                    android:drawableEnd="@drawable/ic_chevron_right_"
+                    />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#f2f2f2"
+                    android:layout_marginLeft="@dimen/dp_17"
+                    android:layout_marginRight="@dimen/dp_17"/>
+
+                <TextView
+                    android:id="@+id/tv_new_arrivals"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_60"
+                    android:text="@string/new_arrivals"
+                    android:textColor="@color/black"
+                    android:padding="@dimen/dp_12"
+                    android:textSize="@dimen/sp_20"
+                    android:drawableStart="@drawable/ic_new_svgrepo_com"
+                    android:drawablePadding="@dimen/dp_22"
+                    android:drawableEnd="@drawable/ic_chevron_right_"
+                    />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+</RelativeLayout>

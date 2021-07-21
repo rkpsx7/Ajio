@@ -20,9 +20,18 @@
     <string name="empty_bag_desc">Sign in to link products in your account or view \n products already in your wishlist or bag</string>
     <string name="version_1_0_build_0001">Version 1.0 Build 0001</string>
     <string name="home">Home</string>
-    <string name="stores">Stores</string>
     <string name="account">Account</string>
     <string name="wishlist">Wishlist</string>
     <string name="bag">Bag</string>
     <string name="your_bag_is_empty">Your bag is empty</string>
+    <string name="shop_by">Shop by</string>
+    <string name="women">Women</string>
+    <string name="men">Men</string>
+    <string name="kids">Kids</string>
+    <string name="home_and_kitchen">Home And Kitchen</string>
+    <string name="stores">Stores</string>
+    <string name="indie_the_artisan_store">Indie (the Artisan Store)</string>
+    <string name="jewellery">Jewellery</string>
+    <string name="sneakerhood">Sneakerhood</string>
+    <string name="new_arrivals">New Arrivals</string>
 </resources>
