@@ -27,13 +27,6 @@ public class HomeFragment extends Fragment {
 
         mBinding = FragmentHomeBinding.inflate(inflater, container, false);
 
-        Glide.with(mBinding.imgSale)
-                .load("https://assets.ajio.com/medias/sys_master/images/images/h4d/hba/33870600339486/15072021-d-unisex-topbanner-50to80-iconicfashionsale.jpg")
-                .into(mBinding.imgSale);
-
-        Glide.with(mBinding.imgMobikwik)
-                .load("https://assets.ajio.com/medias/sys_master/images/images/h83/h73/33815931617310/07072021-D-unisex-alliances-mobikwik.jpg")
-                .into(mBinding.imgMobikwik);
 
         int [] saleImages = {R.drawable.sale1, R.drawable.sale2, R.drawable.sale3, R.drawable.sale4};
 
