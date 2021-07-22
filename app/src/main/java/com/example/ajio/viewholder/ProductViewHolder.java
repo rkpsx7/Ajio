@@ -14,24 +14,24 @@ import com.example.ajio.model.ProductModel;
 public class ProductViewHolder extends RecyclerView.ViewHolder {
 
     public ImageView mImageView;
-    public TextView productName, productDisc, productPrice;
+    public TextView productName, productSeller, productPrice;
 
     public ProductViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        mImageView = itemView.findViewById(R.id.bottom_menu);
-        productName = itemView.findViewById(R.id.bottom_menu);
-        productDisc = itemView.findViewById(R.id.bottom_menu);
-        productPrice = itemView.findViewById(R.id.bottom_menu);
+        mImageView = itemView.findViewById(R.id.iv_product_image);
+        productSeller = itemView.findViewById(R.id.product_seller);
+        productName = itemView.findViewById(R.id.product_name);
+        productPrice = itemView.findViewById(R.id.product_price);
     }
 
     public void setData(ProductModel model) {
 
-//        Glide.with(mImageView).
-//                load(model.getUrl()).
-//                into(mImageView);
-//        productName.setText(model.getProductName());
-//        productDisc.setText(model.getProductDisc());
-//        productPrice.setText(String.valueOf(model.getPrice()));
+        Glide.with(mImageView).
+                load(model.getUrl()).
+                into(mImageView);
+        productName.setText(model.getProductName());
+        productSeller.setText(model.getSeller());
+        productPrice.setText(String.valueOf(model.getPrice()));
     }
 }

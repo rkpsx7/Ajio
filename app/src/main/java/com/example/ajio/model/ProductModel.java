@@ -5,9 +5,12 @@ public class ProductModel {
     private String url;
     private String seller;
     private String productName;
-    private int price;
+    private Long price;
 
-    public ProductModel(String url, String seller, String productName, int price) {
+    public ProductModel() {
+    }
+
+    public ProductModel(String url, String seller, String productName, Long price) {
         this.url = url;
         this.seller = seller;
         this.productName = productName;
@@ -26,7 +29,7 @@ public class ProductModel {
         return productName;
     }
 
-    public int getPrice() {
+    public Long getPrice() {
         return price;
     }
 }

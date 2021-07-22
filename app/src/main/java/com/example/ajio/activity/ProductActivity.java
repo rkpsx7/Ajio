@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.example.ajio.R;
 import com.example.ajio.adapter.ProductAdapter;
 import com.example.ajio.databinding.ActivityProductBinding;
@@ -30,8 +31,6 @@ import java.util.List;
 public class ProductActivity extends AppCompatActivity implements PaymentResultListener, OnClickListener {
 
     private ActivityProductBinding mBinding;
-    private FirebaseUser mUser;
-    private DatabaseReference mDatabaseReference;
     private ProductAdapter mAdapter;
     private List<ProductModel> mList;
 
@@ -45,13 +44,10 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
 
         initializeData();
         addData();
-
     }
 
     private void initializeData() {
 
-        mUser = FirebaseAuth.getInstance().getCurrentUser();
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference("ProductUrl");
         mList = new ArrayList<>();
         mAdapter = new ProductAdapter(mList, this);
         mBinding.recyclerView.setAdapter(mAdapter);
@@ -59,9 +55,7 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
 
     private void addData() {
 
-        mList = new ArrayList<>();
-
-        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("ProductUrl").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -71,18 +65,27 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
 
                     for (DataSnapshot snapshot1 : snapshot.getChildren()) {
 
+                        Toast.makeText(ProductActivity.this,snapshot1.getKey(), Toast.LENGTH_SHORT).show();
+
+                        String value = String.valueOf(snapshot1.getKey());
+
                         ProductModel model = snapshot1.getValue(ProductModel.class);
 
                         mList.add(model);
                     }
 
                     mAdapter.notifyDataSetChanged();
+
+                } else {
+
+                    Toast.makeText(ProductActivity.this, "Error!", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+                Toast.makeText(ProductActivity.this,error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
