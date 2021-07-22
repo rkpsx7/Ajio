@@ -46,4 +46,6 @@
     <string name="jewellery">Previous Jwellary</string>
     <string name="sneakerHood">SneakerHood</string>
     <string name="new_arrivals">New Arrivals</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

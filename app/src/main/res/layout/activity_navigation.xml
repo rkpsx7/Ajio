@@ -59,8 +59,10 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/img_ajio_luxe"
         android:layout_below="@id/top_layout"
         android:background="@color/lime_white"
         android:orientation="vertical">
@@ -100,7 +102,7 @@
                         android:padding="@dimen/dp_12"
                         android:text="@string/women"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/sp_20"
+                        android:textSize="@dimen/sp_18"
                         app:drawableEndCompat="@drawable/ic_chevron_right_"
                         app:drawableStartCompat="@drawable/ic_woman_svgrepo_com" />
 
@@ -118,7 +120,7 @@
                         android:padding="@dimen/dp_12"
                         android:text="@string/men"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/sp_20"
+                        android:textSize="@dimen/sp_18"
                         app:drawableEndCompat="@drawable/ic_chevron_right_"
                         app:drawableStartCompat="@drawable/ic_man_svgrepo_com" />
 
@@ -136,7 +138,7 @@
                         android:padding="@dimen/dp_12"
                         android:text="@string/kids"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/sp_20"
+                        android:textSize="@dimen/sp_18"
                         app:drawableEndCompat="@drawable/ic_chevron_right_"
                         app:drawableStartCompat="@drawable/ic_baby_svgrepo_com" />
 
@@ -154,7 +156,7 @@
                         android:padding="@dimen/dp_12"
                         android:text="@string/home_and_kitchen"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/sp_20"
+                        android:textSize="@dimen/sp_18"
                         app:drawableEndCompat="@drawable/ic_chevron_right_"
                         app:drawableStartCompat="@drawable/ic_home_repair_svgrepo_com" />
 
@@ -172,7 +174,7 @@
                         android:padding="@dimen/dp_12"
                         android:text="@string/stores"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/sp_20"
+                        android:textSize="@dimen/sp_18"
                         app:drawableEndCompat="@drawable/ic_chevron_right_"
                         app:drawableStartCompat="@drawable/ic_shop_store_svgrepo_com" />
 
@@ -191,7 +193,7 @@
                         android:singleLine="true"
                         android:text="@string/indie_the_artisan_store"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/sp_20"
+                        android:textSize="@dimen/sp_18"
                         app:drawableEndCompat="@drawable/ic_chevron_right_"
                         app:drawableStartCompat="@drawable/ic_flower_svgrepo_com" />
 
@@ -209,7 +211,7 @@
                         android:padding="@dimen/dp_12"
                         android:text="@string/jewellery"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/sp_20"
+                        android:textSize="@dimen/sp_18"
                         app:drawableEndCompat="@drawable/ic_chevron_right_"
                         app:drawableStartCompat="@drawable/ic_earrings_svgrepo_com" />
 
@@ -227,7 +229,7 @@
                         android:padding="@dimen/dp_12"
                         android:text="@string/sneakerHood"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/sp_20"
+                        android:textSize="@dimen/sp_18"
                         app:drawableEndCompat="@drawable/ic_chevron_right_"
                         app:drawableStartCompat="@drawable/ic_sneaker_svgrepo_com" />
 
@@ -245,13 +247,22 @@
                         android:padding="@dimen/dp_12"
                         android:text="@string/new_arrivals"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/sp_20"
+                        android:textSize="@dimen/sp_18"
                         app:drawableEndCompat="@drawable/ic_chevron_right_"
                         app:drawableStartCompat="@drawable/ic_new_svgrepo_com" />
 
                 </LinearLayout>
-
             </ScrollView>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_ajio_luxe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ajio_lux"
+        tools:ignore="ContentDescription" />
+
 </RelativeLayout>

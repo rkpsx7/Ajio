@@ -10,13 +10,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import com.example.ajio.R;
 import com.example.ajio.databinding.ActivityHomeBinding;
+import com.example.ajio.fragment.BottomSheetFragment;
 import com.example.ajio.fragment.HomeFragment;
 import com.example.ajio.fragment.StoresFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -36,6 +37,8 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
                 .commit();
 
         mBinding.imgHamburger.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, NavigationActivity.class)));
+        mBinding.imgNotification.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, NotificationActivity.class)));
+        mBinding.imgDrop.setOnClickListener(v -> openBottomSheetDialog());
     }
 
     @Override
@@ -90,5 +93,11 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         }
 
         return true;
+    }
+
+    private void openBottomSheetDialog() {
+
+        BottomSheetFragment fragment = new BottomSheetFragment();
+        fragment.show(getSupportFragmentManager(), fragment.getTag());
     }
 }

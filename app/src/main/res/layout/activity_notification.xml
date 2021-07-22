@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,8 +16,9 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:background="@color/white"
-            android:paddingLeft="@dimen/dp_12"
-            android:src="@drawable/ic_clear" />
+            android:paddingStart="@dimen/dp_12"
+            android:src="@drawable/ic_clear"
+            tools:ignore="ContentDescription,RtlSymmetry" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -42,12 +42,12 @@
 
         <TextView
             android:id="@+id/btn_all"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/black"
-            android:padding="@dimen/dp_5"
             android:gravity="center"
+            android:padding="@dimen/dp_5"
             android:text="@string/all"
             android:textAllCaps="false"
             android:textColor="@color/white" />
@@ -58,23 +58,22 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@color/white"
-            android:padding="@dimen/dp_5"
-            android:gravity="center"
             android:enabled="false"
+            android:gravity="center"
+            android:padding="@dimen/dp_5"
             android:text="@string/order_updates"
             android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="@dimen/dp_12" />
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/btn_promotions"
             android:layout_width="@dimen/dp_0"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/black"
+            android:background="@color/white"
             android:backgroundTint="@color/black"
-            android:padding="@dimen/dp_5"
             android:gravity="center"
+            android:padding="@dimen/dp_5"
             android:text="@string/promotions"
             android:textAllCaps="false"
             android:textColor="@color/white" />
@@ -85,76 +84,64 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/lr_button_switcher"
-        android:layout_margin="@dimen/dp_12"
         android:background="@color/white"
-        android:scrollIndicators="none">
+        android:scrollIndicators="none"
+        tools:ignore="UnusedAttribute">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white"
+            android:layout_height="wrap_content"
+            android:background="@color/lime_white"
             android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_33">
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:adjustViewBounds="true"
+                android:src="@drawable/n1"
+                tools:ignore="ContentDescription" />
 
-                <ImageButton
-                    android:id="@+id/cv_notifi_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/notifi_image_back"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/n1" />
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_33">
+                android:layout_marginBottom="@dimen/dp_10"
+                android:adjustViewBounds="true"
+                android:src="@drawable/n2"
+                tools:ignore="ContentDescription" />
 
-                <ImageButton
-                    android:id="@+id/iv_notifi_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/notifi_image_back"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/n2" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_33">
+                android:layout_marginBottom="@dimen/dp_10"
+                android:adjustViewBounds="true"
+                android:src="@drawable/n3"
+                tools:ignore="ContentDescription" />
 
-                <ImageButton
-                    android:id="@+id/iv_notifi_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/notifi_image_back"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/n3" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_33">
+                android:layout_marginBottom="@dimen/dp_10"
+                android:adjustViewBounds="true"
+                android:src="@drawable/n4"
+                tools:ignore="ContentDescription" />
 
-                <ImageButton
-                    android:id="@+id/iv_notifi_4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/notifi_image_back"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/n4" />
-            </androidx.cardview.widget.CardView>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:adjustViewBounds="true"
+                android:src="@drawable/n5"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:src="@drawable/n6"
+                tools:ignore="ContentDescription" />
 
         </LinearLayout>
     </ScrollView>
