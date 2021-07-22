@@ -262,7 +262,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:adjustViewBounds="true"
+        android:onClick="onProductClick"
         android:src="@drawable/ajio_lux"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription,UsingOnClickInXml" />
 
 </RelativeLayout>

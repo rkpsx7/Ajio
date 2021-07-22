@@ -17,70 +17,81 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:onClick="onProductClick"
+                android:orientation="horizontal"
+                tools:ignore="OnClick,UsingOnClickInXml">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/category1" />
+                    android:src="@drawable/category1"
+                    tools:ignore="ContentDescription" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/category2" />
+                    android:src="@drawable/category2"
+                    tools:ignore="ContentDescription" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/category3" />
+                    android:src="@drawable/category3"
+                    tools:ignore="ContentDescription" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/category4" />
+                    android:src="@drawable/category4"
+                    tools:ignore="ContentDescription" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/category5" />
+                    android:src="@drawable/category5"
+                    tools:ignore="ContentDescription" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/category6" />
+                    android:src="@drawable/category6"
+                    tools:ignore="ContentDescription" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/category7" />
+                    android:src="@drawable/category7"
+                    tools:ignore="ContentDescription" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/category8" />
+                    android:src="@drawable/category8"
+                    tools:ignore="ContentDescription" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/category9" />
+                    android:src="@drawable/category9"
+                    tools:ignore="ContentDescription" />
 
             </LinearLayout>
         </HorizontalScrollView>
@@ -90,29 +101,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:onClick="onProductClick"
             android:scaleType="fitXY"
-            android:src="@drawable/img_sale" />
+            android:src="@drawable/img_sale"
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
         <ImageView
             android:id="@+id/img_mobikwik"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:onClick="onProductClick"
             android:scaleType="fitXY"
-            android:src="@drawable/mobikwik" />
+            android:src="@drawable/mobikwik"
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
         <ViewFlipper
             android:id="@+id/view_flipper"
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="200dp"
+            android:onClick="onProductClick"
+            tools:ignore="OnClick,UsingOnClickInXml" />
 
         <ImageView
             android:id="@+id/img_discount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:onClick="onProductClick"
             android:scaleType="fitXY"
-            android:src="@drawable/discount" />
+            android:src="@drawable/discount"
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
         <HorizontalScrollView
             android:layout_width="match_parent"
@@ -127,13 +146,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="80dp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/refer1" />
+                    android:onClick="onProductClick"
+                    android:src="@drawable/refer1"
+                    tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="80dp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/refer2" />
+                    android:onClick="onProductClick"
+                    android:src="@drawable/refer2"
+                    tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
             </LinearLayout>
 
@@ -143,85 +166,113 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/home1" />
+            android:onClick="onProductClick"
+            android:src="@drawable/home1"
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/home2" />
+            android:onClick="onProductClick"
+            android:src="@drawable/home2"
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/home3" />
+            android:onClick="onProductClick"
+            android:src="@drawable/home3"
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/home4" />
+            android:onClick="onProductClick"
+            android:src="@drawable/home4"
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/home5" />
+            android:onClick="onProductClick"
+            android:src="@drawable/home5"
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/home6" />
+            android:onClick="onProductClick"
+            android:src="@drawable/home6"
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/home7" />
+            android:onClick="onProductClick"
+            android:src="@drawable/home7"
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/home8" />
+            android:onClick="onProductClick"
+            android:src="@drawable/home8"
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/home9" />
+            android:onClick="onProductClick"
+            android:src="@drawable/home9"
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/home10" />
+            android:onClick="onProductClick"
+            android:src="@drawable/home10"
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/home11" />
+            android:onClick="onProductClick"
+            android:src="@drawable/home11"
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/home12" />
+            android:onClick="onProductClick"
+            android:src="@drawable/home12"
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/home13" />
+            android:onClick="onProductClick"
+            android:src="@drawable/home13"
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/home14" />
+            android:onClick="onProductClick"
+            android:src="@drawable/home14"
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
     </LinearLayout>
 </ScrollView>

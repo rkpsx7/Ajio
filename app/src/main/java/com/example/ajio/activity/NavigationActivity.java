@@ -2,6 +2,7 @@ package com.example.ajio.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,5 +20,10 @@ public class NavigationActivity extends AppCompatActivity {
         binding.ibHome.setOnClickListener(v -> startActivity(new Intent(NavigationActivity.this, HomeActivity.class)));
         binding.imgAjioLuxe.setOnClickListener(v -> startActivity(new Intent(NavigationActivity.this, HomeActivity.class)));
         binding.ibSearch.setOnClickListener(v -> startActivity(new Intent(NavigationActivity.this, HomeActivity.class)));
+    }
+
+    public void onProductClick(View v) {
+
+        startActivity(new Intent(NavigationActivity.this, ProductActivity.class));
     }
 }

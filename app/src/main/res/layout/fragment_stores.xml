@@ -14,43 +14,49 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:onClick="onProductClick"
             android:src="@drawable/stores2"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:onClick="onProductClick"
             android:src="@drawable/stores3"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:onClick="onProductClick"
             android:src="@drawable/stores4"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:onClick="onProductClick"
             android:src="@drawable/stores5"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:onClick="onProductClick"
             android:src="@drawable/stores6"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:onClick="onProductClick"
             android:src="@drawable/stores7"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
     </LinearLayout>
 </ScrollView>

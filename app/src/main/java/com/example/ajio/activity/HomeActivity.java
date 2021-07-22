@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -99,5 +100,10 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 
         BottomSheetFragment fragment = new BottomSheetFragment();
         fragment.show(getSupportFragmentManager(), fragment.getTag());
+    }
+
+    public void onProductClick(View v) {
+
+        startActivity(new Intent(HomeActivity.this, ProductActivity.class));
     }
 }

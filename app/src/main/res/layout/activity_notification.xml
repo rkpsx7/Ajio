@@ -101,7 +101,8 @@
                 android:layout_marginBottom="@dimen/dp_10"
                 android:adjustViewBounds="true"
                 android:src="@drawable/n1"
-                tools:ignore="ContentDescription" />
+                android:onClick="onProductClick"
+                tools:ignore="ContentDescription,UsingOnClickInXml" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -109,7 +110,8 @@
                 android:layout_marginBottom="@dimen/dp_10"
                 android:adjustViewBounds="true"
                 android:src="@drawable/n2"
-                tools:ignore="ContentDescription" />
+                android:onClick="onProductClick"
+                tools:ignore="ContentDescription,UsingOnClickInXml" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -117,7 +119,8 @@
                 android:layout_marginBottom="@dimen/dp_10"
                 android:adjustViewBounds="true"
                 android:src="@drawable/n3"
-                tools:ignore="ContentDescription" />
+                android:onClick="onProductClick"
+                tools:ignore="ContentDescription,UsingOnClickInXml" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -125,7 +128,8 @@
                 android:layout_marginBottom="@dimen/dp_10"
                 android:adjustViewBounds="true"
                 android:src="@drawable/n4"
-                tools:ignore="ContentDescription" />
+                android:onClick="onProductClick"
+                tools:ignore="ContentDescription,UsingOnClickInXml" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -133,7 +137,8 @@
                 android:layout_marginBottom="@dimen/dp_10"
                 android:adjustViewBounds="true"
                 android:src="@drawable/n5"
-                tools:ignore="ContentDescription" />
+                android:onClick="onProductClick"
+                tools:ignore="ContentDescription,UsingOnClickInXml" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -141,7 +146,8 @@
                 android:adjustViewBounds="true"
                 android:layout_marginBottom="@dimen/dp_10"
                 android:src="@drawable/n6"
-                tools:ignore="ContentDescription" />
+                android:onClick="onProductClick"
+                tools:ignore="ContentDescription,UsingOnClickInXml" />
 
         </LinearLayout>
     </ScrollView>

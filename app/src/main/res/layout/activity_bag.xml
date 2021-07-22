@@ -54,9 +54,10 @@
         android:layout_below="@+id/toolbar"
         android:layout_margin="@dimen/dp_10"
         android:adjustViewBounds="true"
+        android:onClick="onProductClick"
         android:scaleType="fitCenter"
         android:src="@drawable/offer_bag"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription,UsingOnClickInXml" />
 
     <RelativeLayout
         android:id="@+id/rl_empty_bag_info"
@@ -93,11 +94,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_bag_is_empty"
         android:layout_centerHorizontal="true"
-        android:visibility="gone"
         android:layout_marginTop="@dimen/dp_10"
         android:text="@string/empty_bag_desc"
         android:textAlignment="center"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:visibility="gone" />
 
     <LinearLayout
         android:layout_width="match_parent"

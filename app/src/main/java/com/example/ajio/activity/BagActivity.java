@@ -122,4 +122,9 @@ public class BagActivity extends AppCompatActivity {
             mBinding.tvEmptyDescription.setVisibility(View.VISIBLE);
         }
     }
+
+    public void onProductClick(View v) {
+
+        startActivity(new Intent(BagActivity.this, ProductActivity.class));
+    }
 }
