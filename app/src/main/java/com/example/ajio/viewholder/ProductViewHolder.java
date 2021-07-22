@@ -27,11 +27,11 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
 
     public void setData(ProductModel model) {
 
-        Glide.with(mImageView).
-                load(model.getUrl()).
-                into(mImageView);
-        productName.setText(model.getProductName());
-        productDisc.setText(model.getProductDisc());
-        productPrice.setText(String.valueOf(model.getPrice()));
+//        Glide.with(mImageView).
+//                load(model.getUrl()).
+//                into(mImageView);
+//        productName.setText(model.getProductName());
+//        productDisc.setText(model.getProductDisc());
+//        productPrice.setText(String.valueOf(model.getPrice()));
     }
 }

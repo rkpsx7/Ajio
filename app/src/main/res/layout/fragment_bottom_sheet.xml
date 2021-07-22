@@ -3,12 +3,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.BottomSheetFragment">
 
-    <ImageView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/refer1"
-        android:adjustViewBounds="true"/>
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_25">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/select_a_store"
+                android:textSize="@dimen/sp_18"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_33"
+                android:drawableEnd="@drawable/ic_icons8_checked"
+                android:text="@string/ajio"
+                android:textAllCaps="true"
+                android:textColor="#004d4d"
+                android:textSize="@dimen/sp_40"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/your_online_aisle_of_style_desc" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/dark"
+                android:layout_marginTop="@dimen/dp_33"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_33"
+                android:drawableEnd="@drawable/ic_baseline_arrow_forward_24"
+                android:text="@string/ajio_luxe"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="@dimen/sp_40"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/international_amp_luxury_products" />
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
 
 </FrameLayout>

@@ -46,6 +46,10 @@
     <string name="jewellery">Previous Jwellary</string>
     <string name="sneakerHood">SneakerHood</string>
     <string name="new_arrivals">New Arrivals</string>
+    <string name="select_a_store">Select A Store</string>
+    <string name="your_online_aisle_of_style_desc">Your Online Aisle Of Style</string>
+    <string name="ajio_luxe">AJIO LUXE</string>
+    <string name="international_amp_luxury_products"><![CDATA[International & Luxury Products]]></string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="current_amount">Balance: &#x20B9;</string>
