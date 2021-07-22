@@ -2,7 +2,9 @@ package com.example.ajio.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Toast;
 
@@ -14,8 +16,6 @@ import com.example.ajio.adapter.ProductAdapter;
 import com.example.ajio.databinding.ActivityProductBinding;
 import com.example.ajio.interfaces.OnClickListener;
 import com.example.ajio.model.ProductModel;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -55,10 +55,10 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
         mAdapter = new ProductAdapter(mList, this, this);
         mBinding.recyclerView.setAdapter(mAdapter);
 
-        mBinding.imgBag.setOnClickListener(v-> startActivity(new Intent(ProductActivity.this, BagActivity.class)));
-        mBinding.imgFavourite.setOnClickListener(v-> startActivity(new Intent(ProductActivity.this, WishlistActivity.class)));
-        mBinding.imgSearch.setOnClickListener(v-> startActivity(new Intent(ProductActivity.this, HomeActivity.class)));
-        mBinding.imgHamburger.setOnClickListener(v-> startActivity(new Intent(ProductActivity.this, NavigationActivity.class)));
+        mBinding.imgBag.setOnClickListener(v -> startActivity(new Intent(ProductActivity.this, BagActivity.class)));
+        mBinding.imgFavourite.setOnClickListener(v -> startActivity(new Intent(ProductActivity.this, WishlistActivity.class)));
+        mBinding.imgSearch.setOnClickListener(v -> startActivity(new Intent(ProductActivity.this, HomeActivity.class)));
+        mBinding.imgHamburger.setOnClickListener(v -> startActivity(new Intent(ProductActivity.this, NavigationActivity.class)));
     }
 
     private void addData() {
@@ -80,9 +80,12 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
 
                     Collections.shuffle(mList);
 
-                    adjustView();
+                    new Handler().postDelayed(() -> {
 
-                    mAdapter.notifyDataSetChanged();
+                        adjustView();
+
+                        mAdapter.notifyDataSetChanged();
+                    }, 2000);
 
                 } else {
 
@@ -95,7 +98,7 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
-               adjustView();
+                adjustView();
 
                 Toast.makeText(ProductActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
@@ -105,7 +108,19 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
     @Override
     public void onProductClick(int position) {
         this.position = position;
-        startPayment();
+
+        SharedPreferences preferences = getSharedPreferences("PREFS", MODE_PRIVATE);
+        boolean loggedInAlready = preferences.getBoolean("loggedIn", false);
+
+        if (loggedInAlready) {
+            startPayment();
+
+        } else {
+
+            Toast.makeText(this, "Sign in first to purchase this product", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(ProductActivity.this, AccountActivity.class));
+            finish();
+        }
     }
 
     public void startPayment() {

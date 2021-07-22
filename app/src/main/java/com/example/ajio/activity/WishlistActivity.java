@@ -2,6 +2,7 @@ package com.example.ajio.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -94,7 +95,19 @@ public class WishlistActivity extends AppCompatActivity implements OnClickListen
     @Override
     public void onProductClick(int position) {
         this.position = position;
-        startPayment();
+
+        SharedPreferences preferences = getSharedPreferences("PREFS", MODE_PRIVATE);
+        boolean loggedInAlready = preferences.getBoolean("loggedIn", false);
+
+        if (loggedInAlready) {
+            startPayment();
+
+        } else {
+
+            Toast.makeText(this, "Sign in first to purchase this product", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(WishlistActivity.this, AccountActivity.class));
+            finish();
+        }
     }
 
     public void startPayment() {

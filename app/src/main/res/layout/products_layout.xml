@@ -65,7 +65,16 @@
             android:id="@+id/product_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="₹1999"
+            android:text="Delivery expected by 26th July"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/tv_delivery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delivery_info"
+            android:textColor="@color/green"
+            android:visibility="gone"
             android:textSize="@dimen/sp_12" />
 
     </LinearLayout>

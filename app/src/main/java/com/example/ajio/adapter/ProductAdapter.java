@@ -1,6 +1,9 @@
 package com.example.ajio.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ajio.R;
+import com.example.ajio.activity.AccountActivity;
 import com.example.ajio.activity.BagActivity;
 import com.example.ajio.activity.ProductActivity;
 import com.example.ajio.activity.WishlistActivity;
@@ -23,6 +27,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
@@ -54,9 +60,23 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
         checkWishList(mList.get(position).getUrl(), holder);
 
-        holder.setData(mList.get(position));
+        holder.setData(mList.get(position), mContext);
         holder.mImageView.setOnClickListener(v -> mListener.onProductClick(position));
-        holder.mImgWishList.setOnClickListener(v -> wishlistItem(position));
+        holder.mImgWishList.setOnClickListener(v -> {
+
+            SharedPreferences preferences = mContext.getSharedPreferences("PREFS", MODE_PRIVATE);
+            boolean loggedInAlready = preferences.getBoolean("loggedIn", false);
+
+            if (loggedInAlready) {
+
+                wishlistItem(position);
+
+            } else {
+                Toast.makeText(mContext, "Sign in first to purchase this product", Toast.LENGTH_SHORT).show();
+                mContext.startActivity(new Intent(mContext, AccountActivity.class));
+                ((Activity) mContext).finish();
+            }
+        });
     }
 
     @Override
@@ -84,7 +104,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
                         if (task.isSuccessful()) {
 
-                            Toast.makeText(mContext, "Product wishlisted", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, "Product WishListed", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

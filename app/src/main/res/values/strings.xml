@@ -58,4 +58,5 @@
     <string name="sort_by">SORT BY</string>
     <string name="category">CATEGORY</string>
     <string name="filters">FILTERS</string>
+    <string name="delivery_info">Delivery expected by 26th July</string>
 </resources>
