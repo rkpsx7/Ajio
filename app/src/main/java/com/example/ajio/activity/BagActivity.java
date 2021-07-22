@@ -6,10 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ajio.R;
+import com.example.ajio.adapter.ProductAdapter;
 import com.example.ajio.databinding.ActivityBagBinding;
+import com.example.ajio.interfaces.OnClickListener;
+import com.example.ajio.model.ProductModel;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -19,12 +23,22 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class BagActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class BagActivity extends AppCompatActivity implements OnClickListener {
 
     private static final int SIGN_IN_KEY = 1;
     private FirebaseAuth mAuth;
     private ActivityBagBinding mBinding;
+    private List<ProductModel> mList;
+    private ProductAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +52,55 @@ public class BagActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        mList = new ArrayList<>();
+        mAdapter = new ProductAdapter(mList, this, this);
+        mBinding.recyclerView.setAdapter(mAdapter);
+
+        addData();
+
         mBinding.ivCross.setOnClickListener(v -> finish());
         mBinding.btnContinueShopping.setOnClickListener(v -> finish());
         mBinding.btnLoginJoin.setOnClickListener(v -> signInWithGoogle());
         mBinding.ivFavourite.setOnClickListener(v-> startActivity(new Intent(BagActivity.this, WishlistActivity.class)));
+    }
+
+    private void addData() {
+
+        FirebaseDatabase.getInstance().getReference("Orders").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if (snapshot.exists()) {
+
+                    mBinding.recyclerView.setVisibility(View.VISIBLE);
+                    mBinding.rlEmptyBagInfo.setVisibility(View.GONE);
+                    mBinding.tvBagIsEmpty.setVisibility(View.GONE);
+
+                    mList.clear();
+
+                    for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+
+                        ProductModel model = snapshot1.getValue(ProductModel.class);
+
+                        mList.add(model);
+                    }
+
+                    mAdapter.notifyDataSetChanged();
+
+                } else {
+
+                    mBinding.recyclerView.setVisibility(View.VISIBLE);
+                    mBinding.rlEmptyBagInfo.setVisibility(View.GONE);
+                    mBinding.tvBagIsEmpty.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+                Toast.makeText(BagActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void signInWithGoogle() {
@@ -124,8 +183,9 @@ public class BagActivity extends AppCompatActivity {
         }
     }
 
-    public void onProductClick(View v) {
+    @Override
+    public void onProductClick(int position) {
 
-        startActivity(new Intent(BagActivity.this, ProductActivity.class));
+        Toast.makeText(this, "You have already purchased this item", Toast.LENGTH_SHORT).show();
     }
 }

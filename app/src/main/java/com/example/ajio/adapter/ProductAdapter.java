@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ajio.R;
+import com.example.ajio.activity.BagActivity;
 import com.example.ajio.activity.ProductActivity;
 import com.example.ajio.activity.WishlistActivity;
 import com.example.ajio.interfaces.OnClickListener;
@@ -45,7 +46,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
 
-        if (mContext instanceof WishlistActivity) {
+        if (mContext instanceof WishlistActivity || mContext instanceof BagActivity) {
             holder.mImgWishList.setVisibility(View.GONE);
         } else {
             holder.mImgWishList.setVisibility(View.VISIBLE);
@@ -69,15 +70,29 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Wishlist");
 
-        String key = reference.push().getKey();
+        reference.orderByChild("url").equalTo(model.getUrl()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-        assert key != null;
+                if (!snapshot.exists()) {
 
-        reference.child(key).setValue(model).addOnCompleteListener(task -> {
+                    String key = reference.push().getKey();
 
-            if (task.isSuccessful()) {
+                    assert key != null;
 
-                Toast.makeText(mContext, "Product wishlisted", Toast.LENGTH_SHORT).show();
+                    reference.child(key).setValue(model).addOnCompleteListener(task -> {
+
+                        if (task.isSuccessful()) {
+
+                            Toast.makeText(mContext, "Product wishlisted", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }

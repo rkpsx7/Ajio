@@ -3,6 +3,7 @@ package com.example.ajio.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -13,8 +14,11 @@ import com.example.ajio.adapter.ProductAdapter;
 import com.example.ajio.databinding.ActivityProductBinding;
 import com.example.ajio.interfaces.OnClickListener;
 import com.example.ajio.model.ProductModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.razorpay.Checkout;
@@ -31,6 +35,7 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
     private ActivityProductBinding mBinding;
     private ProductAdapter mAdapter;
     private List<ProductModel> mList;
+    private int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,9 +80,13 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
 
                     Collections.shuffle(mList);
 
+                    adjustView();
+
                     mAdapter.notifyDataSetChanged();
 
                 } else {
+
+                    adjustView();
 
                     Toast.makeText(ProductActivity.this, "Error!", Toast.LENGTH_SHORT).show();
                 }
@@ -86,6 +95,8 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+               adjustView();
+
                 Toast.makeText(ProductActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -93,6 +104,7 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
 
     @Override
     public void onProductClick(int position) {
+        this.position = position;
         startPayment();
     }
 
@@ -147,12 +159,34 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
     public void onPaymentSuccess(String s) {
 
         Toast.makeText(this, "Payment successful", Toast.LENGTH_SHORT).show();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Orders");
+
+        String key = reference.push().getKey();
+
+        assert key != null;
+        reference.child(key).setValue(mList.get(position)).addOnCompleteListener(task -> {
+
+            if (task.isSuccessful()) {
+                startActivity(new Intent(ProductActivity.this, BagActivity.class));
+                finish();
+            }
+        });
     }
 
     @Override
     public void onPaymentError(int i, String s) {
 
         Toast.makeText(this, "Payment failed", Toast.LENGTH_SHORT).show();
+    }
+
+    private void adjustView() {
+
+        mBinding.shimmerLayout.setVisibility(View.GONE);
+        mBinding.tvPrice.setVisibility(View.VISIBLE);
+        mBinding.tvProducts.setVisibility(View.VISIBLE);
+        mBinding.recyclerView.setVisibility(View.VISIBLE);
+        mBinding.bottomLayout.setVisibility(View.VISIBLE);
     }
 
 }

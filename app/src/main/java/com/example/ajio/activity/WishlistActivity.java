@@ -1,6 +1,7 @@
 package com.example.ajio.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -15,6 +16,7 @@ import com.example.ajio.interfaces.OnClickListener;
 import com.example.ajio.model.ProductModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.razorpay.Checkout;
@@ -30,6 +32,7 @@ public class WishlistActivity extends AppCompatActivity implements OnClickListen
     private List<ProductModel> mList;
     private ProductAdapter mAdapter;
     private ActivityWishlistBinding mBinding;
+    private int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +93,7 @@ public class WishlistActivity extends AppCompatActivity implements OnClickListen
 
     @Override
     public void onProductClick(int position) {
+        this.position = position;
         startPayment();
     }
 
@@ -144,6 +148,19 @@ public class WishlistActivity extends AppCompatActivity implements OnClickListen
     public void onPaymentSuccess(String s) {
 
         Toast.makeText(this, "Payment successful", Toast.LENGTH_SHORT).show();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Orders");
+
+        String key = reference.push().getKey();
+
+        assert key != null;
+        reference.child(key).setValue(mList.get(position)).addOnCompleteListener(task -> {
+
+            if (task.isSuccessful()) {
+                startActivity(new Intent(WishlistActivity.this, BagActivity.class));
+                finish();
+            }
+        });
     }
 
     @Override
