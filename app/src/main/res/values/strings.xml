@@ -55,4 +55,7 @@
     <string name="current_amount">Balance: &#x20B9;</string>
     <string name="_2345_products">2345 Products</string>
     <string name="under_rs_9999">Under Rs 9999</string>
+    <string name="sort_by">SORT BY</string>
+    <string name="category">CATEGORY</string>
+    <string name="filters">FILTERS</string>
 </resources>
