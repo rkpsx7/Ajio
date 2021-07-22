@@ -5,55 +5,75 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/dp_10"
     tools:context=".activity.WishlistActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/wishlist"
-        android:textColor="@color/black"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tv_wishlist"
-        android:adjustViewBounds="true"
-        android:src="@drawable/heart"
-        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tv_wishlist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tv_disc"
-        android:layout_marginBottom="@dimen/dp_10"
-        android:text="@string/your_wishlist_is_empty"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-        android:textColor="@color/black" />
-
-    <TextView
-        android:id="@+id/tv_disc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_continue_shopping"
-        android:layout_marginBottom="@dimen/dp_10"
-        android:text="@string/disc"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="@dimen/sp_12" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_continue_shopping"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:backgroundTint="@color/black"
         android:padding="@dimen/dp_10"
-        android:layout_marginBottom="@dimen/dp_10"
-        android:text="@string/continue_n_shopping"
-        app:cornerRadius="@dimen/dp_10" />
+        android:text="@string/wishlist"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_18"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/layout_relative"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tv_wishlist"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/img_wishlist"
+            android:adjustViewBounds="true"
+            android:src="@drawable/heart"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/img_wishlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_disc"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:text="@string/your_wishlist_is_empty"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_disc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btn_continue_shopping"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:text="@string/disc"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_12" />
+
+        <Button
+            android:id="@+id/btn_continue_shopping"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/dp_10"
+            android:backgroundTint="@color/black"
+            android:padding="@dimen/dp_10"
+            android:text="@string/continue_n_shopping" />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tv_wishlist"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2" />
 
 </RelativeLayout>

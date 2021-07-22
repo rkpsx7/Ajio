@@ -1,6 +1,7 @@
 package com.example.ajio.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -46,8 +47,13 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
     private void initializeData() {
 
         mList = new ArrayList<>();
-        mAdapter = new ProductAdapter(mList, this);
+        mAdapter = new ProductAdapter(mList, this, this);
         mBinding.recyclerView.setAdapter(mAdapter);
+
+        mBinding.imgBag.setOnClickListener(v-> startActivity(new Intent(ProductActivity.this, BagActivity.class)));
+        mBinding.imgFavourite.setOnClickListener(v-> startActivity(new Intent(ProductActivity.this, WishlistActivity.class)));
+        mBinding.imgSearch.setOnClickListener(v-> startActivity(new Intent(ProductActivity.this, HomeActivity.class)));
+        mBinding.imgHamburger.setOnClickListener(v-> startActivity(new Intent(ProductActivity.this, NavigationActivity.class)));
     }
 
     private void addData() {
@@ -148,4 +154,5 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
 
         Toast.makeText(this, "Payment failed", Toast.LENGTH_SHORT).show();
     }
+
 }

@@ -22,6 +22,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.util.Objects;
+
 public class AccountActivity extends AppCompatActivity {
 
     private static final int SIGN_IN_KEY = 1;
@@ -105,7 +107,7 @@ public class AccountActivity extends AppCompatActivity {
                 });
     }
 
-    @SuppressLint("UseCompatLoadingForDrawables")
+    @SuppressLint({"UseCompatLoadingForDrawables", "SetTextI18n"})
     private void checkLoginState(FirebaseUser user) {
 
         if (user == null) return;
@@ -124,7 +126,12 @@ public class AccountActivity extends AppCompatActivity {
 
             mBinding.tvName.setText(user.getDisplayName());
             mBinding.tvEmail.setText(user.getEmail());
-            mBinding.tvPhone.setText(user.getPhoneNumber());
+
+            if (Objects.requireNonNull(user.getPhoneNumber()).length() < 10) {
+                mBinding.tvPhone.setText("8890790340");
+            } else {
+                mBinding.tvPhone.setText(user.getPhoneNumber());
+            }
 
         } else {
 

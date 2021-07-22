@@ -61,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_15"
-        android:text="@string/current_amount"
+        android:text="@string/under_rs_9999"
         android:textColor="@color/black" />
 
     <TextView
