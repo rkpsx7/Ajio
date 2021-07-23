@@ -18,28 +18,27 @@ import com.example.ajio.fragment.BottomSheetFragment;
 import com.example.ajio.fragment.HomeFragment;
 import com.example.ajio.fragment.StoresFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
-
-    ActivityHomeBinding mBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding = ActivityHomeBinding.inflate(getLayoutInflater());
-        setContentView(mBinding.getRoot());
+        ActivityHomeBinding binding = ActivityHomeBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        mBinding.menuBottom.setOnNavigationItemSelectedListener(this);
+        binding.menuBottom.setOnNavigationItemSelectedListener(this);
+        binding.menuBottom.setOnNavigationItemSelectedListener(this);
 
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_container, new HomeFragment())
                 .commit();
 
-        mBinding.imgHamburger.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, NavigationActivity.class)));
-        mBinding.imgNotification.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, NotificationActivity.class)));
-        mBinding.imgDrop.setOnClickListener(v -> openBottomSheetDialog());
+        binding.imgHamburger.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, NavigationActivity.class)));
+        binding.imgNotification.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, NotificationActivity.class)));
+        binding.imgDrop.setOnClickListener(v -> openBottomSheetDialog());
+
     }
 
     @Override
@@ -53,6 +52,8 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
+
+            // Setting menu
 
             case R.id.menu_home:
                 getSupportFragmentManager()

@@ -28,7 +28,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProductActivity extends AppCompatActivity implements PaymentResultListener, OnClickListener {
 
@@ -36,6 +38,8 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
     private ProductAdapter mAdapter;
     private List<ProductModel> mList;
     private int position;
+    private DatabaseReference mDatabaseReference;
+    private static boolean shuffling = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,7 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
         mList = new ArrayList<>();
         mAdapter = new ProductAdapter(mList, this, this);
         mBinding.recyclerView.setAdapter(mAdapter);
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference("ProductDetails");
 
         mBinding.imgBag.setOnClickListener(v -> startActivity(new Intent(ProductActivity.this, BagActivity.class)));
         mBinding.imgFavourite.setOnClickListener(v -> startActivity(new Intent(ProductActivity.this, WishlistActivity.class)));
@@ -63,7 +68,9 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
 
     private void addData() {
 
-        FirebaseDatabase.getInstance().getReference("ProductUrl").addValueEventListener(new ValueEventListener() {
+        // Retrieving product details from firebase
+
+        mDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -78,7 +85,11 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
                         mList.add(model);
                     }
 
-                    Collections.shuffle(mList);
+                    if (shuffling) {
+
+                        Collections.shuffle(mList);
+                        shuffling = false;
+                    }
 
                     new Handler().postDelayed(() -> {
 
@@ -108,6 +119,8 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
     @Override
     public void onProductClick(int position) {
         this.position = position;
+
+        // Saving login state in shared preference
 
         SharedPreferences preferences = getSharedPreferences("PREFS", MODE_PRIVATE);
         boolean loggedInAlready = preferences.getBoolean("loggedIn", false);
@@ -175,12 +188,11 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
 
         Toast.makeText(this, "Payment successful", Toast.LENGTH_SHORT).show();
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Orders");
+        Map<String, Object> map = new HashMap<>();
+        map.put("ordered", true);
+        map.put("wishlisted", false);
 
-        String key = reference.push().getKey();
-
-        assert key != null;
-        reference.child(key).setValue(mList.get(position)).addOnCompleteListener(task -> {
+        mDatabaseReference.child(mList.get(position).getKey()).updateChildren(map).addOnCompleteListener(task -> {
 
             if (task.isSuccessful()) {
                 startActivity(new Intent(ProductActivity.this, BagActivity.class));

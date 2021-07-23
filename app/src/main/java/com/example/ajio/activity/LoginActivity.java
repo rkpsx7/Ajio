@@ -38,6 +38,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void signInWithGoogle() {
 
+        // Initializing Google sign In Options
+
         GoogleSignInOptions gso = new GoogleSignInOptions
                 .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -53,6 +55,8 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        // Fetching request code for sign in
 
         if (requestCode == SIGN_IN_KEY) {
 
@@ -74,9 +78,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void firebaseAuthWithGoogle(String idToken) {
+
+        // Generating credential and token
+
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
+
                     if (task.isSuccessful()) {
 
                         Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_SHORT).show();

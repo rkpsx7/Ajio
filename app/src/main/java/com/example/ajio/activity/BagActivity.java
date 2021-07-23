@@ -29,7 +29,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class BagActivity extends AppCompatActivity implements OnClickListener {
@@ -48,7 +47,15 @@ public class BagActivity extends AppCompatActivity implements OnClickListener {
         mBinding = ActivityBagBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
 
-        checkLoginState();
+        initDataAndViews();
+
+        mBinding.ivCross.setOnClickListener(v -> finish());
+        mBinding.btnContinueShopping.setOnClickListener(v -> finish());
+        mBinding.btnLoginJoin.setOnClickListener(v -> signInWithGoogle());
+        mBinding.ivFavourite.setOnClickListener(v -> startActivity(new Intent(BagActivity.this, WishlistActivity.class)));
+    }
+
+    private void initDataAndViews() {
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -56,6 +63,7 @@ public class BagActivity extends AppCompatActivity implements OnClickListener {
         mAdapter = new ProductAdapter(mList, this, this);
         mBinding.recyclerView.setAdapter(mAdapter);
 
+        checkLoginState();
         addData();
 
         mBinding.imgCross.setOnClickListener(v -> finish());
@@ -66,7 +74,9 @@ public class BagActivity extends AppCompatActivity implements OnClickListener {
 
     private void addData() {
 
-        FirebaseDatabase.getInstance().getReference("Orders").addValueEventListener(new ValueEventListener() {
+        // Fetching orders from Firebase
+
+        FirebaseDatabase.getInstance().getReference("ProductDetails").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -82,7 +92,12 @@ public class BagActivity extends AppCompatActivity implements OnClickListener {
 
                         ProductModel model = snapshot1.getValue(ProductModel.class);
 
-                        mList.add(model);
+                        // Adding data in the list after getting from Firebase
+
+                        if (model != null && model.isOrdered()) {
+
+                            mList.add(model);
+                        }
                     }
 
                     mAdapter.notifyDataSetChanged();
@@ -105,6 +120,8 @@ public class BagActivity extends AppCompatActivity implements OnClickListener {
 
     private void signInWithGoogle() {
 
+        // Initializing Google sign In Options
+
         GoogleSignInOptions gso = new GoogleSignInOptions
                 .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -120,6 +137,8 @@ public class BagActivity extends AppCompatActivity implements OnClickListener {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        // Fetching request code for sign in
 
         if (requestCode == SIGN_IN_KEY) {
 
@@ -141,9 +160,14 @@ public class BagActivity extends AppCompatActivity implements OnClickListener {
     }
 
     private void firebaseAuthWithGoogle(String idToken) {
+
+        // Generating credential and token
+
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
+
                     if (task.isSuccessful()) {
 
                         Toast.makeText(BagActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
@@ -159,6 +183,8 @@ public class BagActivity extends AppCompatActivity implements OnClickListener {
 
     private void saveLoginState() {
 
+        // Saving login state in shared preference
+
         SharedPreferences.Editor preferences = getSharedPreferences("PREFS", MODE_PRIVATE).edit();
         preferences.putBoolean("loggedIn", true);
         preferences.apply();
@@ -167,6 +193,8 @@ public class BagActivity extends AppCompatActivity implements OnClickListener {
     }
 
     private void checkLoginState() {
+
+        // Checking login state
 
         SharedPreferences preferences = getSharedPreferences("PREFS", MODE_PRIVATE);
         boolean loggedInAlready = preferences.getBoolean("loggedIn", false);

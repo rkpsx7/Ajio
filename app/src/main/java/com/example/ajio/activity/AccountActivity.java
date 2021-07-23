@@ -47,6 +47,8 @@ public class AccountActivity extends AppCompatActivity {
 
     private void signInWithGoogle() {
 
+        // Initializing Google sign In Options
+
         GoogleSignInOptions gso = new GoogleSignInOptions
                 .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -62,6 +64,8 @@ public class AccountActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        // Fetching request code for sign in
 
         if (requestCode == SIGN_IN_KEY) {
 
@@ -83,9 +87,14 @@ public class AccountActivity extends AppCompatActivity {
     }
 
     private void firebaseAuthWithGoogle(String idToken) {
+
+        // Generating credential and token
+
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
+
                     if (task.isSuccessful()) {
 
                         Toast.makeText(AccountActivity.this, "Success", Toast.LENGTH_SHORT).show();
@@ -93,6 +102,8 @@ public class AccountActivity extends AppCompatActivity {
                         mUser = mAuth.getCurrentUser();
 
                         assert mUser != null;
+
+                        // Saving state of user login
 
                         SharedPreferences.Editor preferences = getSharedPreferences("PREFS", MODE_PRIVATE).edit();
                         preferences.putBoolean("loggedIn", true);

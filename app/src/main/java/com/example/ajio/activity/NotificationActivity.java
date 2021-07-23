@@ -1,13 +1,11 @@
 package com.example.ajio.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.ajio.R;
-import com.example.ajio.databinding.ActivityNavigationBinding;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.ajio.databinding.ActivityNotificationBinding;
 
 public class NotificationActivity extends AppCompatActivity {
