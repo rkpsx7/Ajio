@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Toast;
 
@@ -27,7 +26,6 @@ import com.razorpay.PaymentResultListener;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -87,12 +85,8 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
                         mList.add(model);
                     }
 
-                    new Handler().postDelayed(() -> {
-
-                        adjustView();
-
-                        mAdapter.notifyDataSetChanged();
-                    }, 2000);
+                    adjustView();
+                    mAdapter.notifyDataSetChanged();
 
                 } else {
 
