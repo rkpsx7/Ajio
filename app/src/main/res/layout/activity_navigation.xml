@@ -9,7 +9,7 @@
     <RelativeLayout
         android:id="@+id/top_layout"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="@dimen/dp_60">
 
         <ImageButton
             android:id="@+id/ib_back"

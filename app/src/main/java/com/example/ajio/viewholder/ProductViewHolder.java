@@ -23,10 +23,10 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
 
         mImageView = itemView.findViewById(R.id.iv_product_image);
-        productSeller = itemView.findViewById(R.id.product_seller);
-        productName = itemView.findViewById(R.id.product_name);
-        productPrice = itemView.findViewById(R.id.product_price);
-        mImgWishList = itemView.findViewById(R.id.img_wishlist);
+        productSeller = itemView.findViewById(R.id.tv_product_seller);
+        productName = itemView.findViewById(R.id.tv_product_name);
+        productPrice = itemView.findViewById(R.id.tv_product_price);
+        mImgWishList = itemView.findViewById(R.id.tv_wishlist_2);
         mTvDeliveryInfo = itemView.findViewById(R.id.tv_delivery);
 
     }
