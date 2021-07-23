@@ -20,13 +20,12 @@ import com.example.ajio.activity.WishlistActivity;
 import com.example.ajio.interfaces.OnClickListener;
 import com.example.ajio.model.ProductModel;
 import com.example.ajio.viewholder.ProductViewHolder;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -45,6 +44,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        /*
+        Inflating the item layout and passing to view holder
+        */
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.products_layout, parent, false);
         return new ProductViewHolder(view);
     }
@@ -52,31 +54,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
 
+        // Showing wishlist icon only if we were in product activity
+
         if (mContext instanceof WishlistActivity || mContext instanceof BagActivity) {
             holder.mImgWishList.setVisibility(View.GONE);
         } else {
             holder.mImgWishList.setVisibility(View.VISIBLE);
         }
 
-        checkWishList(mList.get(position).getUrl(), holder);
+        checkWishListedItem(position, holder);
 
         holder.setData(mList.get(position), mContext);
-        holder.mImageView.setOnClickListener(v -> mListener.onProductClick(position));
-        holder.mImgWishList.setOnClickListener(v -> {
-
-            SharedPreferences preferences = mContext.getSharedPreferences("PREFS", MODE_PRIVATE);
-            boolean loggedInAlready = preferences.getBoolean("loggedIn", false);
-
-            if (loggedInAlready) {
-
-                wishlistItem(position);
-
-            } else {
-                Toast.makeText(mContext, "Sign in first to purchase this product", Toast.LENGTH_SHORT).show();
-                mContext.startActivity(new Intent(mContext, AccountActivity.class));
-                ((Activity) mContext).finish();
-            }
-        });
+        holder.mImgProduct.setOnClickListener(v -> mListener.onProductClick(position));
+        holder.mImgWishList.setOnClickListener(v -> wishlistItem(position));
     }
 
     @Override
@@ -86,61 +76,66 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
     public void wishlistItem(int position) {
 
-        ProductModel model = mList.get(position);
+        SharedPreferences preferences = mContext.getSharedPreferences("PREFS", MODE_PRIVATE);
+        boolean loggedInAlready = preferences.getBoolean("loggedIn", false);
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Wishlist");
+        if (!loggedInAlready) {
 
-        reference.orderByChild("url").equalTo(model.getUrl()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            Toast.makeText(mContext, "Sign in first to purchase this product", Toast.LENGTH_SHORT).show();
+            mContext.startActivity(new Intent(mContext, AccountActivity.class));
+            ((Activity) mContext).finish();
+            return;
+        }
 
-                if (!snapshot.exists()) {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("ProductDetails");
 
-                    String key = reference.push().getKey();
+        Map<String, Object> map = new HashMap<>();
 
-                    assert key != null;
+        // Updating state of wishlist of a product after clicking on it
 
-                    reference.child(key).setValue(model).addOnCompleteListener(task -> {
+        if (mList.get(position).isWishlisted()) {
 
-                        if (task.isSuccessful()) {
+            map.put("wishlisted", false);
 
-                            Toast.makeText(mContext, "Product WishListed", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+            reference.child(mList.get(position).getKey()).updateChildren(map).addOnCompleteListener(task -> {
+
+                if (task.isSuccessful()) {
+
+                    Toast.makeText(mContext, "Removed from wishlist", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(mContext, "Error", Toast.LENGTH_SHORT).show();
                 }
-            }
+            });
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+        } else {
 
-            }
-        });
+            map.put("wishlisted", true);
+
+            reference.child(mList.get(position).getKey()).updateChildren(map).addOnCompleteListener(task -> {
+
+                if (task.isSuccessful()) {
+
+                    Toast.makeText(mContext, "Product WishListed", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(mContext, "Error", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
-    public void checkWishList(String imageUrl, ProductViewHolder holder) {
+    public void checkWishListedItem(int position, ProductViewHolder holder) {
 
         if (mContext instanceof ProductActivity) {
 
-            FirebaseDatabase.getInstance().getReference("Wishlist").orderByChild("url").equalTo(imageUrl)
-                    .addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+            // Changing the color of the heart icon depending on it is wishListed or not
 
-                            if (snapshot.exists()) {
-
-                                holder.mImgWishList.setImageResource(R.drawable.ic_wishlisted);
-
-                            } else {
-
-                                holder.mImgWishList.setImageResource(R.drawable.ic_favourite);
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
+            if (mList.get(position).isWishlisted()) {
+                holder.mImgWishList.setImageResource(R.drawable.ic_wishlisted);
+            } else {
+                holder.mImgWishList.setImageResource(R.drawable.ic_favourite);
+            }
         }
     }
 }

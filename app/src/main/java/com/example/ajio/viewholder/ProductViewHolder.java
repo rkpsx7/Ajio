@@ -16,38 +16,40 @@ import com.example.ajio.model.ProductModel;
 
 public class ProductViewHolder extends RecyclerView.ViewHolder {
 
-    public ImageView mImageView , mImgWishList;
-    public TextView productName, productSeller, productPrice, mTvDeliveryInfo;
+    public ImageView mImgProduct, mImgWishList;
+    public TextView mTvProductName, mTvProductSeller, mTvProductPrice, mTvDeliveryInfo;
 
     public ProductViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        mImageView = itemView.findViewById(R.id.iv_product_image);
-        productSeller = itemView.findViewById(R.id.product_seller);
-        productName = itemView.findViewById(R.id.product_name);
-        productPrice = itemView.findViewById(R.id.product_price);
+        mImgProduct = itemView.findViewById(R.id.iv_product_image);
+        mTvProductSeller = itemView.findViewById(R.id.product_seller);
+        mTvProductName = itemView.findViewById(R.id.product_name);
+        mTvProductPrice = itemView.findViewById(R.id.product_price);
         mImgWishList = itemView.findViewById(R.id.img_wishlist);
         mTvDeliveryInfo = itemView.findViewById(R.id.tv_delivery);
 
     }
 
+    // Setting the data in item layout
+
     @SuppressLint("SetTextI18n")
     public void setData(ProductModel model, Context context) {
 
         if (context instanceof BagActivity) {
-            productPrice.setVisibility(View.GONE);
+            mTvProductPrice.setVisibility(View.GONE);
             mTvDeliveryInfo.setVisibility(View.VISIBLE);
 
         } else {
-            productPrice.setVisibility(View.VISIBLE);
+            mTvProductPrice.setVisibility(View.VISIBLE);
             mTvDeliveryInfo.setVisibility(View.GONE);
         }
 
-        Glide.with(mImageView).
+        Glide.with(mImgProduct).
                 load(model.getUrl()).
-                into(mImageView);
-        productName.setText(model.getProductName());
-        productSeller.setText(model.getSeller());
-        productPrice.setText("₹" + model.getPrice());
+                into(mImgProduct);
+        mTvProductName.setText(model.getProductName());
+        mTvProductSeller.setText(model.getSeller());
+        mTvProductPrice.setText("₹" + model.getPrice());
     }
 }

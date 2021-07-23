@@ -26,7 +26,9 @@ import com.razorpay.PaymentResultListener;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class WishlistActivity extends AppCompatActivity implements OnClickListener, PaymentResultListener {
 
@@ -34,6 +36,7 @@ public class WishlistActivity extends AppCompatActivity implements OnClickListen
     private ProductAdapter mAdapter;
     private ActivityWishlistBinding mBinding;
     private int position;
+    private DatabaseReference mDatabaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,18 +56,16 @@ public class WishlistActivity extends AppCompatActivity implements OnClickListen
         mList = new ArrayList<>();
         mAdapter = new ProductAdapter(mList, this, this);
         mBinding.recyclerView.setAdapter(mAdapter);
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference("ProductDetails");
     }
 
     private void fetchData() {
 
-        FirebaseDatabase.getInstance().getReference("Wishlist").addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 if (snapshot.exists()) {
-
-                    mBinding.layoutRelative.setVisibility(View.GONE);
-                    mBinding.recyclerView.setVisibility(View.VISIBLE);
 
                     mList.clear();
 
@@ -72,15 +73,19 @@ public class WishlistActivity extends AppCompatActivity implements OnClickListen
 
                         ProductModel model = snapshot1.getValue(ProductModel.class);
 
-                        mList.add(model);
+                        // Adding only those products which has been ordered
+
+                        if (model != null && model.isWishlisted()) {
+
+                            mList.add(model);
+
+                            mBinding.layoutRelative.setVisibility(View.GONE);
+                            mBinding.recyclerView.setVisibility(View.VISIBLE);
+                        }
                     }
 
                     mAdapter.notifyDataSetChanged();
 
-                } else {
-
-                    mBinding.layoutRelative.setVisibility(View.VISIBLE);
-                    mBinding.recyclerView.setVisibility(View.GONE);
                 }
             }
 
@@ -162,12 +167,13 @@ public class WishlistActivity extends AppCompatActivity implements OnClickListen
 
         Toast.makeText(this, "Payment successful", Toast.LENGTH_SHORT).show();
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Orders");
+        Map<String, Object> map = new HashMap<>();
+        map.put("ordered", true);
+        map.put("wishlisted", false);
 
-        String key = reference.push().getKey();
+        // Updating the ordered and wishListed state of a product
 
-        assert key != null;
-        reference.child(key).setValue(mList.get(position)).addOnCompleteListener(task -> {
+        mDatabaseReference.child(mList.get(position).getKey()).updateChildren(map).addOnCompleteListener(task -> {
 
             if (task.isSuccessful()) {
                 startActivity(new Intent(WishlistActivity.this, BagActivity.class));

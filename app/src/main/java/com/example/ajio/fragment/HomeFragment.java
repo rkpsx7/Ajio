@@ -12,14 +12,12 @@ import androidx.fragment.app.Fragment;
 import com.example.ajio.R;
 import com.example.ajio.databinding.FragmentHomeBinding;
 
-
 public class HomeFragment extends Fragment {
 
     public HomeFragment() {
     }
 
-    FragmentHomeBinding mBinding;
-
+    private FragmentHomeBinding mBinding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -38,6 +36,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void showSaleImages(int saleImages) {
+
+        // Sliding the images one by one in infinite loop
 
         ImageView imageView = new ImageView(getContext());
         imageView.setBackgroundResource(saleImages);
