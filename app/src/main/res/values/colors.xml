@@ -7,10 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="lime_white">#FFe6e6ff</color>
+    <color name="lime_white">#FFE6F2FF</color>
     <color name="dark_white">#FFF5F5F5</color>
     <color name="dark">#FFEEEEEE</color>
-    <color name="jio_color">#FF004d4d</color>
-    <color name="blue">#FF3333ff</color>
+    <color name="jio_color">#FF004D4D</color>
+    <color name="blue">#FF3333FF</color>
     <color name="green">#FF00FF00</color>
 </resources>

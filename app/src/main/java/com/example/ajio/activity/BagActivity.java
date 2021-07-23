@@ -77,10 +77,6 @@ public class BagActivity extends AppCompatActivity implements OnClickListener {
 
                 if (snapshot.exists()) {
 
-                    mBinding.recyclerView.setVisibility(View.VISIBLE);
-                    mBinding.rlEmptyBagInfo.setVisibility(View.GONE);
-                    mBinding.tvBagIsEmpty.setVisibility(View.GONE);
-
                     mList.clear();
 
                     for (DataSnapshot snapshot1 : snapshot.getChildren()) {
@@ -92,16 +88,15 @@ public class BagActivity extends AppCompatActivity implements OnClickListener {
                         if (model != null && model.isOrdered()) {
 
                             mList.add(model);
+
+                            mBinding.recyclerView.setVisibility(View.VISIBLE);
+                            mBinding.rlEmptyBagInfo.setVisibility(View.GONE);
+                            mBinding.tvBagIsEmpty.setVisibility(View.GONE);
                         }
                     }
 
                     mAdapter.notifyDataSetChanged();
 
-                } else {
-
-                    mBinding.recyclerView.setVisibility(View.VISIBLE);
-                    mBinding.rlEmptyBagInfo.setVisibility(View.GONE);
-                    mBinding.tvBagIsEmpty.setVisibility(View.GONE);
                 }
             }
 
