@@ -17,7 +17,7 @@
             android:background="@color/white">
 
             <ImageView
-                android:id="@+id/iv_cross"
+                android:id="@+id/img_cross"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/dp_10"
-                android:layout_toEndOf="@+id/iv_cross"
+                android:layout_toEndOf="@+id/img_cross"
                 android:text="@string/bag"
                 android:textColor="@color/black"
                 tools:ignore="RelativeOverlap" />
@@ -58,7 +58,7 @@
         android:onClick="onProductClick"
         android:scaleType="fitCenter"
         android:src="@drawable/offer_bag"
-        tools:ignore="ContentDescription,UsingOnClickInXml" />
+        tools:ignore="ContentDescription,OnClick,UsingOnClickInXml" />
 
     <RelativeLayout
         android:id="@+id/rl_empty_bag_info"

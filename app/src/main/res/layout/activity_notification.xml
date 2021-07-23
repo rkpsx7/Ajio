@@ -6,7 +6,7 @@
     tools:context=".activity.NotificationActivity">
 
     <RelativeLayout
-        android:id="@+id/rl_topbar"
+        android:id="@+id/top_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_60">
 
@@ -33,7 +33,7 @@
         android:id="@+id/lr_button_switcher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rl_topbar"
+        android:layout_below="@id/top_bar"
         android:layout_marginStart="@dimen/dp_12"
         android:layout_marginEnd="@dimen/dp_12"
         android:background="@drawable/notif_middle_button"

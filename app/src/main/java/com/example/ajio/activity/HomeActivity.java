@@ -27,7 +27,8 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         ActivityHomeBinding binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.bottomMenu.setOnNavigationItemSelectedListener(this);
+        binding.menuBottom.setOnNavigationItemSelectedListener(this);
+        binding.menuBottom.setOnNavigationItemSelectedListener(this);
 
         getSupportFragmentManager()
                 .beginTransaction()

@@ -27,13 +27,13 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/img_wishlist"
+            android:layout_above="@+id/tv_wishlist_2"
             android:adjustViewBounds="true"
             android:src="@drawable/heart"
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/img_wishlist"
+            android:id="@+id/tv_wishlist_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/tv_disc"

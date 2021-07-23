@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         mAuth = FirebaseAuth.getInstance();
-        binding.loginTemplate.setOnClickListener(v -> finish());
+        binding.imgLoginTemplate.setOnClickListener(v -> finish());
         binding.imgGoogle.setOnClickListener(v -> signInWithGoogle());
     }
 

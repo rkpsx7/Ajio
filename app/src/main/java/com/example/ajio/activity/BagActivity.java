@@ -65,6 +65,11 @@ public class BagActivity extends AppCompatActivity implements OnClickListener {
 
         checkLoginState();
         addData();
+
+        mBinding.imgCross.setOnClickListener(v -> finish());
+        mBinding.btnContinueShopping.setOnClickListener(v -> finish());
+        mBinding.btnLoginJoin.setOnClickListener(v -> signInWithGoogle());
+        mBinding.ivFavourite.setOnClickListener(v-> startActivity(new Intent(BagActivity.this, WishlistActivity.class)));
     }
 
     private void addData() {
@@ -205,5 +210,10 @@ public class BagActivity extends AppCompatActivity implements OnClickListener {
     public void onProductClick(int position) {
 
         Toast.makeText(this, "You have already purchased this item", Toast.LENGTH_SHORT).show();
+    }
+
+    public void onProductClick(View view) {
+        startActivity(new Intent(BagActivity.this,HomeActivity.class));
+        finish();
     }
 }
