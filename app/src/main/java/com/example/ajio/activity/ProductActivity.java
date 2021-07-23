@@ -39,7 +39,6 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
     private List<ProductModel> mList;
     private int position;
     private DatabaseReference mDatabaseReference;
-    private static boolean shuffling = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +60,10 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
         mDatabaseReference = FirebaseDatabase.getInstance().getReference("ProductDetails");
 
         mBinding.imgBag.setOnClickListener(v -> startActivity(new Intent(ProductActivity.this, BagActivity.class)));
-        mBinding.imgFavourite.setOnClickListener(v -> startActivity(new Intent(ProductActivity.this, WishlistActivity.class)));
+        mBinding.imgFavourite.setOnClickListener(v -> {
+            startActivity(new Intent(ProductActivity.this, WishlistActivity.class));
+            finish();
+        });
         mBinding.imgSearch.setOnClickListener(v -> startActivity(new Intent(ProductActivity.this, HomeActivity.class)));
         mBinding.imgHamburger.setOnClickListener(v -> startActivity(new Intent(ProductActivity.this, NavigationActivity.class)));
     }
@@ -83,12 +85,6 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
                         ProductModel model = snapshot1.getValue(ProductModel.class);
 
                         mList.add(model);
-                    }
-
-                    if (shuffling) {
-
-                        Collections.shuffle(mList);
-                        shuffling = false;
                     }
 
                     new Handler().postDelayed(() -> {
@@ -169,7 +165,7 @@ public class ProductActivity extends AppCompatActivity implements PaymentResultL
             options.put("currency", "INR");
             options.put("amount", "50000");
             options.put("prefill.email", "vipindev@gmail.com");
-            options.put("prefill.contact", "8957176770");
+            options.put("prefill.contact", "8890790340");
             JSONObject retryObj = new JSONObject();
             retryObj.put("enabled", true);
             retryObj.put("max_count", 6);

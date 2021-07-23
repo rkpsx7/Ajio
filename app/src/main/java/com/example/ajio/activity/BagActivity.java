@@ -49,7 +49,7 @@ public class BagActivity extends AppCompatActivity implements OnClickListener {
 
         initDataAndViews();
 
-        mBinding.ivCross.setOnClickListener(v -> finish());
+        mBinding.imgCross.setOnClickListener(v -> finish());
         mBinding.btnContinueShopping.setOnClickListener(v -> finish());
         mBinding.btnLoginJoin.setOnClickListener(v -> signInWithGoogle());
         mBinding.ivFavourite.setOnClickListener(v -> startActivity(new Intent(BagActivity.this, WishlistActivity.class)));

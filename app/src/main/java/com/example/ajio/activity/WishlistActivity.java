@@ -148,7 +148,7 @@ public class WishlistActivity extends AppCompatActivity implements OnClickListen
             options.put("currency", "INR");
             options.put("amount", "50000");
             options.put("prefill.email", "vipindev@gmail.com");
-            options.put("prefill.contact", "8957176770");
+            options.put("prefill.contact", "8890790340");
             JSONObject retryObj = new JSONObject();
             retryObj.put("enabled", true);
             retryObj.put("max_count", 6);

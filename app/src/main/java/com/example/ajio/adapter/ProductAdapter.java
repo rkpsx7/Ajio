@@ -7,11 +7,13 @@ import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.ajio.R;
 import com.example.ajio.activity.AccountActivity;
 import com.example.ajio.activity.BagActivity;
@@ -47,7 +49,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
         /*
         Inflating the item layout and passing to view holder
         */
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.products_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_item_layout, parent, false);
         return new ProductViewHolder(view);
     }
 
@@ -66,7 +68,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
         holder.setData(mList.get(position), mContext);
         holder.mImgProduct.setOnClickListener(v -> mListener.onProductClick(position));
-        holder.mImgWishList.setOnClickListener(v -> wishlistItem(position));
+        holder.mImgWishList.setOnClickListener(v -> wishlistItem(holder.mImgWishList, position));
     }
 
     @Override
@@ -74,14 +76,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
         return mList.size();
     }
 
-    public void wishlistItem(int position) {
+    public void wishlistItem(ImageView imageView, int position) {
 
         SharedPreferences preferences = mContext.getSharedPreferences("PREFS", MODE_PRIVATE);
         boolean loggedInAlready = preferences.getBoolean("loggedIn", false);
 
         if (!loggedInAlready) {
 
-            Toast.makeText(mContext, "Sign in first to purchase this product", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Sign in first to wishlist this product", Toast.LENGTH_SHORT).show();
             mContext.startActivity(new Intent(mContext, AccountActivity.class));
             ((Activity) mContext).finish();
             return;
