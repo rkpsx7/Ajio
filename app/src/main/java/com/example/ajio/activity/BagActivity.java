@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.ajio.R;
 import com.example.ajio.adapter.ProductAdapter;
 import com.example.ajio.databinding.ActivityBagBinding;
-import com.example.ajio.interfaces.OnClickListener;
 import com.example.ajio.model.ProductModel;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -31,7 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BagActivity extends AppCompatActivity implements OnClickListener {
+public class BagActivity extends AppCompatActivity {
 
     private static final int SIGN_IN_KEY = 1;
     private FirebaseAuth mAuth;
@@ -60,7 +59,7 @@ public class BagActivity extends AppCompatActivity implements OnClickListener {
         mAuth = FirebaseAuth.getInstance();
 
         mList = new ArrayList<>();
-        mAdapter = new ProductAdapter(mList, this, this);
+        mAdapter = new ProductAdapter(mList, this);
         mBinding.recyclerView.setAdapter(mAdapter);
 
         checkLoginState();
@@ -204,12 +203,6 @@ public class BagActivity extends AppCompatActivity implements OnClickListener {
             mBinding.btnLoginJoin.setVisibility(View.VISIBLE);
             mBinding.tvEmptyDescription.setVisibility(View.VISIBLE);
         }
-    }
-
-    @Override
-    public void onProductClick(int position) {
-
-        Toast.makeText(this, "You have already purchased this item", Toast.LENGTH_SHORT).show();
     }
 
     public void onProductClick(View view) {

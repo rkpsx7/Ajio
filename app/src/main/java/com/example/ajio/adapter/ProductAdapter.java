@@ -7,23 +7,25 @@ import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.ajio.R;
 import com.example.ajio.activity.AccountActivity;
 import com.example.ajio.activity.BagActivity;
+import com.example.ajio.activity.PaymentActivity;
 import com.example.ajio.activity.ProductActivity;
 import com.example.ajio.activity.WishlistActivity;
-import com.example.ajio.interfaces.OnClickListener;
 import com.example.ajio.model.ProductModel;
 import com.example.ajio.viewholder.ProductViewHolder;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.razorpay.Checkout;
+import com.razorpay.PaymentResultListener;
+
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.List;
@@ -34,12 +36,11 @@ import static android.content.Context.MODE_PRIVATE;
 public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
     private final List<ProductModel> mList;
-    private final OnClickListener mListener;
     private final Context mContext;
+    private int position;
 
-    public ProductAdapter(List<ProductModel> list, OnClickListener listener, Context context) {
+    public ProductAdapter(List<ProductModel> list, Context context) {
         mList = list;
-        mListener = listener;
         mContext = context;
     }
 
@@ -66,9 +67,39 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
         checkWishListedItem(position, holder);
 
+        SharedPreferences preferences = mContext.getSharedPreferences("PREFS", MODE_PRIVATE);
+        boolean loggedInAlready = preferences.getBoolean("loggedIn", false);
+
         holder.setData(mList.get(position), mContext);
-        holder.mImgProduct.setOnClickListener(v -> mListener.onProductClick(position));
-        holder.mImgWishList.setOnClickListener(v -> wishlistItem(holder.mImgWishList, position));
+        holder.mImgWishList.setOnClickListener(v -> {
+
+            if (loggedInAlready) {
+                wishlistItem(position);
+            } else {
+                Toast.makeText(mContext, "Sign in first to wishlist this product", Toast.LENGTH_SHORT).show();
+                mContext.startActivity(new Intent(mContext, AccountActivity.class));
+                ((Activity)mContext).finish();
+            }
+
+        });
+        holder.mImgProduct.setOnClickListener(v -> {
+
+            if (loggedInAlready) {
+                this.position = position;
+
+                if (mContext instanceof BagActivity) {
+                    Toast.makeText(mContext, "You have already purchased this product", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(mContext, PaymentActivity.class);
+                    intent.putExtra("key", mList.get(position).getKey());
+                    mContext.startActivity(intent);
+                }
+            } else {
+                Toast.makeText(mContext, "Sign in first to purchase this product", Toast.LENGTH_SHORT).show();
+                mContext.startActivity(new Intent(mContext, AccountActivity.class));
+                ((Activity)mContext).finish();
+            }
+        });
     }
 
     @Override
@@ -76,18 +107,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
         return mList.size();
     }
 
-    public void wishlistItem(ImageView imageView, int position) {
-
-        SharedPreferences preferences = mContext.getSharedPreferences("PREFS", MODE_PRIVATE);
-        boolean loggedInAlready = preferences.getBoolean("loggedIn", false);
-
-        if (!loggedInAlready) {
-
-            Toast.makeText(mContext, "Sign in first to wishlist this product", Toast.LENGTH_SHORT).show();
-            mContext.startActivity(new Intent(mContext, AccountActivity.class));
-            ((Activity) mContext).finish();
-            return;
-        }
+    public void wishlistItem(int position) {
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("ProductDetails");
 

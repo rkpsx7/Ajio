@@ -109,7 +109,7 @@ public class AccountActivity extends AppCompatActivity {
                         preferences.putBoolean("loggedIn", true);
                         preferences.apply();
 
-                        checkLoginState(mUser);
+                        finish();
 
                     } else {
 
