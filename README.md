@@ -9,7 +9,7 @@ We took 4 days to complete this application. At the end of the project we also o
 - Firebase 
 - Razorpay
 
-## Used Open Source-Libraries 🙂
+## Used Open Source-Libraries 😎
 - [Glide](https://github.com/bumptech/glide)
 - [Circular Image View](https://github.com/hdodenhof/CircleImageView)
 - [Shimmer Effect](https://facebook.github.io/shimmer-android/)
