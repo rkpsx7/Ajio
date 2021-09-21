@@ -7,7 +7,7 @@ We took 4 days to complete this application. At the end of the project we also o
 
 ## Tech Stack ✨
 - Firebase 
-- Razorpay
+- Java
 
 ## Used Open Source-Libraries 😎
 - [Glide](https://github.com/bumptech/glide)
