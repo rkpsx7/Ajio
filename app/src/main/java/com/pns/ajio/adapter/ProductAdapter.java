@@ -1,4 +1,4 @@
-package com.example.ajio.adapter;
+package com.pns.ajio.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,20 +12,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ajio.R;
-import com.example.ajio.activity.AccountActivity;
-import com.example.ajio.activity.BagActivity;
-import com.example.ajio.activity.PaymentActivity;
-import com.example.ajio.activity.ProductActivity;
-import com.example.ajio.activity.WishlistActivity;
-import com.example.ajio.model.ProductModel;
-import com.example.ajio.viewholder.ProductViewHolder;
+import com.pns.ajio.R;
+import com.pns.ajio.activity.AccountActivity;
+import com.pns.ajio.activity.BagActivity;
+import com.pns.ajio.activity.PaymentActivity;
+import com.pns.ajio.activity.ProductActivity;
+import com.pns.ajio.activity.WishlistActivity;
+import com.pns.ajio.model.ProductModel;
+import com.pns.ajio.viewholder.ProductViewHolder;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.razorpay.Checkout;
-import com.razorpay.PaymentResultListener;
-
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.ajio.fragment;
+package com.pns.ajio.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.ajio.R;
-import com.example.ajio.databinding.FragmentHomeBinding;
+import com.pns.ajio.R;
+import com.pns.ajio.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
 

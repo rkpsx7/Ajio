@@ -1,4 +1,4 @@
-package com.example.ajio.activity;
+package com.pns.ajio.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,10 +9,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ajio.R;
-import com.example.ajio.adapter.ProductAdapter;
-import com.example.ajio.databinding.ActivityBagBinding;
-import com.example.ajio.model.ProductModel;
+import com.pns.ajio.R;
+import com.pns.ajio.adapter.ProductAdapter;
+import com.pns.ajio.databinding.ActivityBagBinding;
+import com.pns.ajio.model.ProductModel;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;

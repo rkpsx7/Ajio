@@ -1,4 +1,4 @@
-package com.example.ajio.viewholder;
+package com.pns.ajio.viewholder;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -10,9 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.ajio.R;
-import com.example.ajio.activity.BagActivity;
-import com.example.ajio.model.ProductModel;
+import com.pns.ajio.R;
+import com.pns.ajio.activity.BagActivity;
+import com.pns.ajio.model.ProductModel;
 
 public class ProductViewHolder extends RecyclerView.ViewHolder {
 

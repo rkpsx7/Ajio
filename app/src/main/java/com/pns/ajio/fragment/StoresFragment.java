@@ -1,4 +1,4 @@
-package com.example.ajio.fragment;
+package com.pns.ajio.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.ajio.R;
+import com.pns.ajio.R;
 
 public class StoresFragment extends Fragment {
 

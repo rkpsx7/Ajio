@@ -1,4 +1,4 @@
-package com.example.ajio.model;
+package com.pns.ajio.model;
 
 public class ProductModel {
 

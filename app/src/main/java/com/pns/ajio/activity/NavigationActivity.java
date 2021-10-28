@@ -1,4 +1,4 @@
-package com.example.ajio.activity;
+package com.pns.ajio.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,14 +6,14 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ajio.databinding.ActivityNavigationBinding;
+import com.pns.ajio.databinding.ActivityNavigationBinding;
 
 public class NavigationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        com.example.ajio.databinding.ActivityNavigationBinding binding = ActivityNavigationBinding.inflate(getLayoutInflater());
+        com.pns.ajio.databinding.ActivityNavigationBinding binding = ActivityNavigationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         binding.ibBack.setOnClickListener(v -> startActivity(new Intent(NavigationActivity.this, HomeActivity.class)));

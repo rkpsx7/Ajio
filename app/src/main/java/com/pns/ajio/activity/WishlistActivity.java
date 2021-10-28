@@ -1,4 +1,4 @@
-package com.example.ajio.activity;
+package com.pns.ajio.activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,9 +7,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ajio.adapter.ProductAdapter;
-import com.example.ajio.databinding.ActivityWishlistBinding;
-import com.example.ajio.model.ProductModel;
+import com.pns.ajio.adapter.ProductAdapter;
+import com.pns.ajio.databinding.ActivityWishlistBinding;
+import com.pns.ajio.model.ProductModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

@@ -1,4 +1,4 @@
-package com.example.ajio.activity;
+package com.pns.ajio.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -9,8 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ajio.R;
-import com.example.ajio.databinding.ActivityAccountBinding;
+import com.pns.ajio.R;
+import com.pns.ajio.databinding.ActivityAccountBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;

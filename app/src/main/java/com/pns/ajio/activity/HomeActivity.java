@@ -1,4 +1,4 @@
-package com.example.ajio.activity;
+package com.pns.ajio.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -12,11 +12,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ajio.R;
-import com.example.ajio.databinding.ActivityHomeBinding;
-import com.example.ajio.fragment.BottomSheetFragment;
-import com.example.ajio.fragment.HomeFragment;
-import com.example.ajio.fragment.StoresFragment;
+import com.pns.ajio.R;
+import com.pns.ajio.databinding.ActivityHomeBinding;
+import com.pns.ajio.fragment.BottomSheetFragment;
+import com.pns.ajio.fragment.HomeFragment;
+import com.pns.ajio.fragment.StoresFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {

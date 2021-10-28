@@ -1,4 +1,4 @@
-package com.example.ajio;
+package com.pns.ajio;
 
 import android.content.Context;
 
