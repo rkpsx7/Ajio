@@ -6,6 +6,7 @@ had never used this application so we divided the tasks layouts and backend in t
 We took 4 days to complete this application. At the end of the project we also optimized and removed all the warnings from the code as well as tested the whole application.
 
 ## Tech Stack ✨
+- Android SDK
 - Firebase 
 - Java
 
@@ -15,7 +16,7 @@ We took 4 days to complete this application. At the end of the project we also o
 - [Shimmer Effect](https://facebook.github.io/shimmer-android/)
 
 ## Built With 🚀
-- [Java](https://www.java.com/en/) - Java has platform independent feature so it is used for android development.
+- [Java](https://www.java.com/en/)
 
 ## Instructions to clone this project ✌
 1. Open Android Studio.
