@@ -9,14 +9,13 @@ We took 4 days to complete this application. At the end of the project we also o
 - Android SDK
 - Firebase 
 - Java
+- Firebase
 
 ## Used Open Source-Libraries 😎
 - [Glide](https://github.com/bumptech/glide)
 - [Circular Image View](https://github.com/hdodenhof/CircleImageView)
 - [Shimmer Effect](https://facebook.github.io/shimmer-android/)
 
-## Built With 🚀
-- [Java](https://www.java.com/en/)
 
 ## Instructions to clone this project ✌
 1. Open Android Studio.
@@ -27,3 +26,7 @@ We took 4 days to complete this application. At the end of the project we also o
 ## Here are the some screenshots of the cloned application
 ![GitHub Cards Preview](https://firebasestorage.googleapis.com/v0/b/ajio-f9ef3.appspot.com/o/Learn%20programming%20language%20(2).png?alt=media&token=2b7b2386-3cc5-4192-bb8c-32c809ed431c)
 ![GitHub Cards Preview](https://firebasestorage.googleapis.com/v0/b/ajio-f9ef3.appspot.com/o/Learn%20programming%20language%20(3).png?alt=media&token=802240f8-6800-453c-942c-ee436eedbce1)
+
+
+
+## [Check the app on playstore](https://play.google.com/store/apps/details?id=com.pns.ajio)
