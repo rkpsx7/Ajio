@@ -2,25 +2,28 @@ package com.pns.ajio.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.pns.ajio.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.pns.ajio.R;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class PaymentActivity extends AppCompatActivity implements PaymentResultListener {
 
     private DatabaseReference mDatabaseReference;
-    private String key = "";
+    private final String uid = FirebaseAuth.getInstance().getUid();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +33,6 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
         mDatabaseReference = FirebaseDatabase.getInstance().getReference("ProductDetails");
 
         if (getIntent() != null) {
-            key = getIntent().getStringExtra("key");
             makePayment();
         }
     }
@@ -70,15 +72,19 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
     @Override
     public void onPaymentSuccess(String s) {
 
-        Toast.makeText(this, "Payment successful", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Payment successful ", Toast.LENGTH_SHORT).show();
 
+        ArrayList<String> list = getIntent().getStringArrayListExtra("list");
         Map<String, Object> map = new HashMap<>();
-        map.put("ordered", true);
-        map.put("wishlisted", false);
+
+        list.add(uid);
+
+        map.put("ordered", list);
 
         // Updating the ordered and wishListed state of a product
 
-        mDatabaseReference.child(key).updateChildren(map).addOnCompleteListener(task -> {
+        mDatabaseReference.child(getIntent().getStringExtra("key"))
+                .updateChildren(map).addOnCompleteListener(task -> {
 
             if (task.isSuccessful()) {
                 startActivity(new Intent(this, BagActivity.class));
@@ -90,6 +96,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
     @Override
     public void onPaymentError(int i, String s) {
 
-        Toast.makeText(this, "Payment failed", Toast.LENGTH_SHORT).show();
+        Log.d("TAG", "onPaymentError: " + s);
+        finish();
     }
 }

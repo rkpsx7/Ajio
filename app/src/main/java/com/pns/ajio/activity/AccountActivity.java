@@ -109,7 +109,7 @@ public class AccountActivity extends AppCompatActivity {
                         preferences.putBoolean("loggedIn", true);
                         preferences.apply();
 
-                        finish();
+                        checkLoginState(mUser);
 
                     } else {
 
@@ -138,7 +138,7 @@ public class AccountActivity extends AppCompatActivity {
             mBinding.tvName.setText(user.getDisplayName());
             mBinding.tvEmail.setText(user.getEmail());
 
-            if (Objects.requireNonNull(user.getPhoneNumber()).length() < 10) {
+            if (user.getPhoneNumber() != null && Objects.requireNonNull(user.getPhoneNumber()).length() < 10) {
                 mBinding.tvPhone.setText("8890790340");
             } else {
                 mBinding.tvPhone.setText(user.getPhoneNumber());

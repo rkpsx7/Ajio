@@ -1,5 +1,6 @@
 package com.pns.ajio.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -37,6 +38,7 @@ public class BagActivity extends AppCompatActivity {
     private ActivityBagBinding mBinding;
     private List<ProductModel> mList;
     private ProductAdapter mAdapter;
+    private final String uid = FirebaseAuth.getInstance().getUid();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +65,7 @@ public class BagActivity extends AppCompatActivity {
         mBinding.recyclerView.setAdapter(mAdapter);
 
         checkLoginState();
-        addData();
+        prepareList();
 
         mBinding.imgCross.setOnClickListener(v -> finish());
         mBinding.btnContinueShopping.setOnClickListener(v -> finish());
@@ -71,45 +73,47 @@ public class BagActivity extends AppCompatActivity {
         mBinding.ivFavourite.setOnClickListener(v-> startActivity(new Intent(BagActivity.this, WishlistActivity.class)));
     }
 
-    private void addData() {
+    private void prepareList() {
 
         // Fetching orders from Firebase
 
-        FirebaseDatabase.getInstance().getReference("ProductDetails").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+        FirebaseDatabase.getInstance().getReference("ProductDetails")
+                .addValueEventListener(new ValueEventListener() {
+                    @SuppressLint("NotifyDataSetChanged")
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                if (snapshot.exists()) {
+                        if (snapshot.exists()) {
 
-                    mList.clear();
+                            mList.clear();
 
-                    for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                            for (DataSnapshot snapshot1 : snapshot.getChildren()) {
 
-                        ProductModel model = snapshot1.getValue(ProductModel.class);
+                                ProductModel model = snapshot1.getValue(ProductModel.class);
 
-                        // Adding data in the list after getting from Firebase
+                                // Adding data in the list after getting from Firebase
 
-                        if (model != null && model.isOrdered()) {
+                                if (model != null && model.getOrdered().contains(uid)) {
 
-                            mList.add(model);
+                                    mList.add(model);
 
-                            mBinding.recyclerView.setVisibility(View.VISIBLE);
-                            mBinding.rlEmptyBagInfo.setVisibility(View.GONE);
-                            mBinding.tvBagIsEmpty.setVisibility(View.GONE);
+                                    mBinding.recyclerView.setVisibility(View.VISIBLE);
+                                    mBinding.rlEmptyBagInfo.setVisibility(View.GONE);
+                                    mBinding.tvBagIsEmpty.setVisibility(View.GONE);
+                                }
+                            }
+
+                            mAdapter.notifyDataSetChanged();
+
                         }
                     }
 
-                    mAdapter.notifyDataSetChanged();
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-                Toast.makeText(BagActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+                        Toast.makeText(BagActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void signInWithGoogle() {

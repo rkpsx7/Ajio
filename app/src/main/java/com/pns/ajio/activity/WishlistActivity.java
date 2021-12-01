@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.pns.ajio.adapter.ProductAdapter;
 import com.pns.ajio.databinding.ActivityWishlistBinding;
 import com.pns.ajio.model.ProductModel;
@@ -25,6 +26,7 @@ public class WishlistActivity extends AppCompatActivity {
     private ProductAdapter mAdapter;
     private ActivityWishlistBinding mBinding;
     private DatabaseReference mDatabaseReference;
+    private final String uid = FirebaseAuth.getInstance().getUid();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +65,7 @@ public class WishlistActivity extends AppCompatActivity {
 
                         // Adding only those products which has been ordered
 
-                        if (model != null && model.isWishlisted()) {
+                        if (model != null && model.getWishlisted().contains(uid)) {
 
                             mList.add(model);
 

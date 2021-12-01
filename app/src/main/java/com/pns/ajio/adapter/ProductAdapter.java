@@ -1,5 +1,7 @@
 package com.pns.ajio.adapter;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +14,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.pns.ajio.R;
 import com.pns.ajio.activity.AccountActivity;
 import com.pns.ajio.activity.BagActivity;
@@ -20,20 +25,17 @@ import com.pns.ajio.activity.ProductActivity;
 import com.pns.ajio.activity.WishlistActivity;
 import com.pns.ajio.model.ProductModel;
 import com.pns.ajio.viewholder.ProductViewHolder;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
     private final List<ProductModel> mList;
     private final Context mContext;
-    private int position;
+    private final String uid = FirebaseAuth.getInstance().getUid();
 
     public ProductAdapter(List<ProductModel> list, Context context) {
         mList = list;
@@ -74,26 +76,26 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
             } else {
                 Toast.makeText(mContext, "Sign in first to wishlist this product", Toast.LENGTH_SHORT).show();
                 mContext.startActivity(new Intent(mContext, AccountActivity.class));
-                ((Activity)mContext).finish();
+                ((Activity) mContext).finish();
             }
 
         });
         holder.mImgProduct.setOnClickListener(v -> {
 
             if (loggedInAlready) {
-                this.position = position;
 
-                if (mContext instanceof BagActivity) {
+                if (mList.get(position).getOrdered().contains(FirebaseAuth.getInstance().getUid())) {
                     Toast.makeText(mContext, "You have already purchased this product", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(mContext, PaymentActivity.class);
+                    intent.putStringArrayListExtra("list", mList.get(position).getOrdered());
                     intent.putExtra("key", mList.get(position).getKey());
                     mContext.startActivity(intent);
                 }
             } else {
                 Toast.makeText(mContext, "Sign in first to purchase this product", Toast.LENGTH_SHORT).show();
                 mContext.startActivity(new Intent(mContext, AccountActivity.class));
-                ((Activity)mContext).finish();
+                ((Activity) mContext).finish();
             }
         });
     }
@@ -107,14 +109,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("ProductDetails");
 
+        ArrayList<String> list = mList.get(position).getWishlisted();
         Map<String, Object> map = new HashMap<>();
 
-        // Updating state of wishlist of a product after clicking on it
-
-        if (mList.get(position).isWishlisted()) {
-
-            map.put("wishlisted", false);
-
+        if (list.contains(uid)) {
+            list.remove(uid);
+            map.put("wishlisted", list);
             reference.child(mList.get(position).getKey()).updateChildren(map).addOnCompleteListener(task -> {
 
                 if (task.isSuccessful()) {
@@ -125,16 +125,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
                     Toast.makeText(mContext, "Error", Toast.LENGTH_SHORT).show();
                 }
             });
-
         } else {
-
-            map.put("wishlisted", true);
-
+            list.add(uid);
+            map.put("wishlisted", list);
             reference.child(mList.get(position).getKey()).updateChildren(map).addOnCompleteListener(task -> {
 
                 if (task.isSuccessful()) {
 
-                    Toast.makeText(mContext, "Product WishListed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "Product wishlisted", Toast.LENGTH_SHORT).show();
 
                 } else {
                     Toast.makeText(mContext, "Error", Toast.LENGTH_SHORT).show();
@@ -149,7 +147,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
             // Changing the color of the heart icon depending on it is wishListed or not
 
-            if (mList.get(position).isWishlisted()) {
+            if (mList.get(position).getWishlisted().contains(uid)) {
                 holder.mImgWishList.setImageResource(R.drawable.ic_wishlisted);
             } else {
                 holder.mImgWishList.setImageResource(R.drawable.ic_favourite);
