@@ -1,4 +1,4 @@
-![GitHub Cards Preview](https://firebasestorage.googleapis.com/v0/b/ajio-f9ef3.appspot.com/o/Learn%20programming%20language%20(1).png?alt=media&token=d9fd6ceb-53ec-4176-910c-df6c508a0b1b)
+![GitHub Cards Preview](https://firebasestorage.googleapis.com/v0/b/snapchat-f2264.appspot.com/o/Title_Slide%5B1%5D.png?alt=media&token=baa0cc9d-8a52-44ba-8507-e4c2475816d9)
 
 # About the project
 This was our first collaboration project at Masai School. We had to given to clone AJIO application within a week. AJIO is an Online shopping app and we
