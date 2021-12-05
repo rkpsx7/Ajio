@@ -1,15 +1,9 @@
 ![GitHub Cards Preview](https://firebasestorage.googleapis.com/v0/b/snapchat-f2264.appspot.com/o/Title_Slide%5B1%5D.png?alt=media&token=baa0cc9d-8a52-44ba-8507-e4c2475816d9)
 
-# About the project
-This was our first collaboration project at Masai School. We had to given to clone AJIO application within a week. AJIO is an Online shopping app and we
-had never used this application so we divided the tasks layouts and backend in two parts because we're only two members in our team. 
-We took 4 days to complete this application. At the end of the project we also optimized and removed all the warnings from the code as well as tested the whole application.
-
-## Tech Stack ✨
-- Android SDK
-- Firebase 
-- Java
-- Firebase
+###  
+App Name                   | Describe                  | Tech Stack             | Google Play 
+:------------------------: | :------------------------ | :------------------------: | :------------------------: 
+Ajio Clone | Ajio is a one stop online fashion destination brought to you from the house of Reliance. | Android, Java, Firebase, Glide | [![Get it on Google Play](https://i.imgur.com/T9HnFlW.png)](https://play.google.com/store/apps/details?id=com.pns.ajio)
 
 ## Used Open Source-Libraries 😎
 - [Glide](https://github.com/bumptech/glide)
