@@ -5,11 +5,18 @@ App Name                   | Describe                  | Tech Stack             
 :------------------------: | :------------------------ | :------------------------: | :------------------------: 
 Ajio Clone | Ajio is a one stop online fashion destination brought to you from the house of Reliance. | Android, Java, Firebase, Glide | [![Get it on Google Play](https://i.imgur.com/T9HnFlW.png)](https://play.google.com/store/apps/details?id=com.pns.ajio)
 
-## Used Open Source-Libraries 😎
-- [Glide](https://github.com/bumptech/glide)
-- [Circular Image View](https://github.com/hdodenhof/CircleImageView)
-- [Shimmer Effect](https://facebook.github.io/shimmer-android/)
+# Dependencies 
 
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+    implementation platform('com.google.firebase:firebase-bom:28.2.1')
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.razorpay:checkout:1.6.6'
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+    implementation 'com.firebaseui:firebase-ui-auth:6.2.1'
+    implementation 'com.google.firebase:firebase-auth:21.0.1'
+    implementation 'com.google.firebase:firebase-database:20.0.0'
 
 ## Instructions to clone this project ✌
 1. Open Android Studio.
@@ -18,9 +25,5 @@ Ajio Clone | Ajio is a one stop online fashion destination brought to you from t
 4. Paste the link in Url Box of Android Studio window and click on "Clone" button.
 
 ## Here are the some screenshots of the cloned application
-![GitHub Cards Preview](https://firebasestorage.googleapis.com/v0/b/ajio-f9ef3.appspot.com/o/Learn%20programming%20language%20(2).png?alt=media&token=2b7b2386-3cc5-4192-bb8c-32c809ed431c)
-![GitHub Cards Preview](https://firebasestorage.googleapis.com/v0/b/ajio-f9ef3.appspot.com/o/Learn%20programming%20language%20(3).png?alt=media&token=802240f8-6800-453c-942c-ee436eedbce1)
-
-
-
-## [Check the app on playstore](https://play.google.com/store/apps/details?id=com.pns.ajio)
+![GitHub Cards Preview](https://firebasestorage.googleapis.com/v0/b/ajio-f9ef3.appspot.com/o/Untitled%20design%20(8).png?alt=media&token=2545c57f-4622-4468-bee8-075b1bd80cdd)
+![GitHub Cards Preview](https://firebasestorage.googleapis.com/v0/b/ajio-f9ef3.appspot.com/o/Untitled%20design%20(9).png?alt=media&token=bdbb5e39-292b-47b7-8460-05217ef7687f)
