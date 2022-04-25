@@ -87,6 +87,8 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
                 .updateChildren(map).addOnCompleteListener(task -> {
 
             if (task.isSuccessful()) {
+                Toast.makeText(this, "Location detected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Product will be delivered by tomorrow", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, BagActivity.class));
                 finish();
             }

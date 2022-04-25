@@ -4,6 +4,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('D:\\MY PC\\Ajio_Key\\key.jks')
+            storePassword '78824712'
+            keyAlias 'key0'
+            keyPassword '78824712'
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
@@ -11,8 +19,8 @@ android {
         applicationId "com.pns.ajio"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 5
-        versionName "2.0.0"
+        versionCode 6
+        versionName "2.0.5"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -32,6 +40,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 

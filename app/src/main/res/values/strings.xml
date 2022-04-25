@@ -57,5 +57,6 @@
     <string name="category">CATEGORY</string>
     <string name="filters">FILTERS</string>
     <string name="excel">Excel</string>
-    <string name="delivery_info">Delivery expected by 27th July</string>
+    <string name="delivery_info">Delivery expected by Tomorrow</string>
+    <string name="about">This is a project based application only\nApp Version 2.0.5</string>
 </resources>

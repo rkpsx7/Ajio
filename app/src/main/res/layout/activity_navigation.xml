@@ -260,10 +260,22 @@
         android:id="@+id/img_ajio_luxe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:adjustViewBounds="true"
+        android:layout_above="@+id/about"
         android:onClick="onProductClick"
         android:src="@drawable/ajio_lux"
         tools:ignore="ContentDescription,UsingOnClickInXml" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/about"
+        android:id="@+id/about"
+        android:onClick="onAboutClick"
+        android:background="@color/lime_white"
+        android:textAlignment="center"
+        android:textSize="10sp"
+        tools:ignore="SmallSp,UsingOnClickInXml" />
 
 </RelativeLayout>
