@@ -58,5 +58,6 @@
     <string name="filters">FILTERS</string>
     <string name="excel">Excel</string>
     <string name="delivery_info">Delivery expected by Tomorrow</string>
-    <string name="about">This is a project based application only\nApp Version 2.0.5</string>
+    <string name="about">This is a project based application only\nApp Version 2.0.8</string>
+    <string name="ins">Application is under maintenance\nPlease check back after some time.</string>
 </resources>

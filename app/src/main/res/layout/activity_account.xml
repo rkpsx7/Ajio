@@ -242,17 +242,6 @@
                 android:textColor="@color/black"
                 app:drawableEndCompat="@drawable/ic_chevron_right_" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/dp_1"
-                android:background="@color/white"
-                android:gravity="center"
-                android:padding="@dimen/dp_12"
-                android:text="@string/version_1_0_build_0001"
-                android:textColor="#C0C0C0"
-                android:textSize="@dimen/sp_12" />
-
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

@@ -3,6 +3,7 @@ package com.pns.ajio.activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -10,10 +11,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.pns.ajio.R;
-import com.pns.ajio.adapter.ProductAdapter;
-import com.pns.ajio.databinding.ActivityBagBinding;
-import com.pns.ajio.model.ProductModel;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -27,6 +24,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.pns.ajio.R;
+import com.pns.ajio.adapter.ProductAdapter;
+import com.pns.ajio.databinding.ActivityBagBinding;
+import com.pns.ajio.model.ProductModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,9 +69,56 @@ public class BagActivity extends AppCompatActivity {
         prepareList();
 
         mBinding.imgCross.setOnClickListener(v -> finish());
+        mBinding.imgContact.setOnClickListener(v -> contact());
+        mBinding.imgDev.setOnClickListener(v -> contactDev());
         mBinding.btnContinueShopping.setOnClickListener(v -> finish());
         mBinding.btnLoginJoin.setOnClickListener(v -> signInWithGoogle());
-        mBinding.ivFavourite.setOnClickListener(v-> startActivity(new Intent(BagActivity.this, WishlistActivity.class)));
+        mBinding.ivFavourite.setOnClickListener(v -> startActivity(new Intent(BagActivity.this, WishlistActivity.class)));
+    }
+
+    private void contactDev() {
+
+        FirebaseDatabase.getInstance().getReference("Mail")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if (snapshot.exists()) {
+                    String mail = "mailto:" + snapshot.getValue(String.class);
+                    Intent intent = new Intent(Intent.ACTION_SENDTO);
+                    intent.setData(Uri.parse(mail));
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "Regarding : AJIO");
+                    startActivity(Intent.createChooser(intent, "Send Using"));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void contact() {
+
+        FirebaseDatabase.getInstance().getReference("Contact")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if (snapshot.exists()) {
+
+                    String phone = "+91" + snapshot.getValue(String.class);
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
+                    startActivity(Intent.createChooser(intent, "Call Using"));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void prepareList() {
@@ -181,8 +229,6 @@ public class BagActivity extends AppCompatActivity {
 
     private void saveLoginState() {
 
-        // Saving login state in shared preference
-
         SharedPreferences.Editor preferences = getSharedPreferences("PREFS", MODE_PRIVATE).edit();
         preferences.putBoolean("loggedIn", true);
         preferences.apply();
@@ -210,7 +256,7 @@ public class BagActivity extends AppCompatActivity {
     }
 
     public void onProductClick(View view) {
-        startActivity(new Intent(BagActivity.this,HomeActivity.class));
+        startActivity(new Intent(BagActivity.this, HomeActivity.class));
         finish();
     }
 }
